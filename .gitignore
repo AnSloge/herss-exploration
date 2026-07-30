@@ -25,5 +25,5 @@ obj/
 # Private data folder for work
 data/*
 
-
+.venv
 
