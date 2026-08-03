@@ -1,0 +1,86 @@
+##########################################################################
+# TOPOLOGY FILE -- GRESSE single-reservoir slice of uTAHPS
+#
+# Extracted verbatim from data/utahps_daily/topology_utahps.txt (nodes 3, 7, 8)
+# by analysis/scarcity_gap/build_instances.py. No physical parameter changed.
+# Structural edits, all forced by riversystem.cpp:58,65,71 (idnr = file position):
+#   reservoir   3 GRESSE       -> 0
+#   pstation    7 SVEIGSHYL_II -> 1   (OUTLET_TUNNEL 7 -> 1)
+#   channel     8 DALSANA      -> 2   (DOWNLINK_IDNR 8 -> 2), outlet (-9)
+#   OVERFLOW_CURVE target 4 (GRONANI, not in the slice) -> 2. Value-neutral:
+#   overflow leaves the system and never enters income or the terminal term.
+##########################################################################
+
+##########################################################################
+# GRESSE RESERVOIR
+# NODE NODETYPE(RESERVOIR/PSTATION/CHANNEL) IDNR NAME
+NODE RESERVOIR 0 GRESSE
+HRW 749.0
+LRW 740.0
+RES_PENALTY 300
+# Reservoir curve points, [masl, Mm3] Curve must go below hatch_masl.
+RESERVOIR_CURVE 13
+725.00	20.70
+730.00	46.68
+735.00	75.31
+740.00	106.60
+741.00	113.09
+743.00	126.28
+745.00	139.81
+748.00	160.86
+749.00	168.04
+750.00	175.34
+751.00  180.34
+752.00  200.34
+755.00  500.0
+# Overflow curve, points, downstream idnr   [masl, m3s]
+OVERFLOW_CURVE 3 2
+749.00	0.0
+751.00	10.0
+755.00	200.0
+# Outlet hatch downstream_nodeid, qmin_hatch, qmax_hatch, hatch_masl
+OUTLET_HATCH -9999
+OUTLET_TUNNEL 1
+OUTLET_AUTO_QMIN -9999
+ENDNODE
+########################################################################################
+
+#########################################################################################
+# SVEIGSHYL_II POWERSTATION GRESSE IS INTAKE
+NODE PSTATION 1 SVEIGSHYL_II
+DOWNLINK_IDNR 2
+# Turbine efficiency curve [M3s, %]
+NR_GENERATORS 1
+GENERATOR 0
+TURBINE_CURVE 10
+0.00	0
+0.60	50
+0.72	60
+1.04	70
+1.28	80
+1.52	85
+2.04	90
+2.40	91
+5.76	90
+6.00	89
+GENERATOR_MAX_DISCHARGE 6.0
+STATIC_GENERATOR_EFFICIENCY 0.96
+HEADLOSSCOEF 0.145
+POWSTAT_MASL 581.0
+POWSTAT_MIN_DISCHARGE 0.6
+POWSTAT_MAX_DISCHARGE 6.0
+POWSTAT_STARTSTOP 2.0
+LOCAL_ENERGY_EQUIVALENT 0.39
+AUTO_QMIN -9999
+MAX_ADJUST -9999
+ENDNODE
+#########################################################################################
+
+########################################################################################
+# System outlet. Downstream id -9 (was 9 = KROKNESVATN in the full cascade).
+NODE CHANNEL 2 DALSANA -9
+N_CASCADE_LINRES 3
+K_TRAVELTIME_HOURS 6
+QMIN -9999
+ENDNODE
+########################################################################################

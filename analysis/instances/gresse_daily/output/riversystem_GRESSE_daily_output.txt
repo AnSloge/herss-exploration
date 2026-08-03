@@ -1,0 +1,31 @@
+Riversystem GRESSE_daily
+Node Idnr Nodename          Nodetype int Nodetypename Remaining_Mm3
+Node  0 GRESSE               Nodetype 0  RESERVOIR             118.4307 
+Node  1 SVEIGSHYL_II         Nodetype 1  PSTATION              0.0000 
+Node  2 DALSANA              Nodetype 2  CHANNEL               0.0648 
+-------------------------------------------
+GLOBAL WATERBALANCE
+start_water_Mm3   = 155.791237
+inflow_volume_Mm3 = 57.286656
+outflow_Mm3       = 94.582437
+end_water_Mm3     = 118.495456
+waterbalance      = -0.000000
+Note that there might be dead water below LRW in the system
+-------------------------------------------
+Average_price_Euro           = 137.878
+RestPrice_Euro               = 101.000
+tot_remaining_Mm3            = 118.495
+tot_active_remaining_Mm3     = 11.831
+tot_remaining_MWh            = 4613.956
+tot_remaining_Euro           = 466009.539
+Sum_Production_MWh           = 36512.341
+tot_income_Euro              = 5053455.462
+Avg_achieved_price_E_MWh     = 138.404
+sum_qmin_cost_Euro           = 0.000
+sum_lrw_cost_Euro            = 0.000
+sum_startstopcost_Euro       = 1.000
+sum_max_adjustment_cost      = 0.000
+sum_aggressive_actions_cost  = 0.000
+tot_cost_Euro                = 1.000
+tot_profit_Euro              = 5053454.462
+valuefunction_Euro           = 5519464.001

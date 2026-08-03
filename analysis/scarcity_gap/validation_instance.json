@@ -1,0 +1,95 @@
+{
+  "hjelle": {
+    "cli_ok": true,
+    "log_findings": [],
+    "herss_load": {
+      "stps": 365,
+      "restprice": 101.0,
+      "nr_nodes": 3,
+      "nr_reservoirs": 1,
+      "nr_pstations": 1,
+      "nr_channels": 1
+    },
+    "water_balance": {
+      "start_water_Mm3": 7.342156,
+      "inflow_volume_Mm3": 92.320992,
+      "outflow_Mm3": 95.502268,
+      "end_water_Mm3": 4.16088,
+      "waterbalance": 0.0,
+      "remaining_reservoir_HJELLE": 4.1321,
+      "remaining_pstation_SVOLETJONN": 0.0,
+      "remaining_channel_VANAROSEN": 0.0288
+    },
+    "regime": {
+      "T": 365,
+      "active_Mm3": 9.0,
+      "init_active_Mm3": 6.3,
+      "inflow_Mm3": 92.320992,
+      "turbine_capacity_Mm3": 126.144,
+      "R": 0.07134703196347032,
+      "rho": 0.7818127853881278
+    }
+  },
+  "gresse": {
+    "cli_ok": true,
+    "log_findings": [],
+    "herss_load": {
+      "stps": 365,
+      "restprice": 101.0,
+      "nr_nodes": 3,
+      "nr_reservoirs": 1,
+      "nr_pstations": 1,
+      "nr_channels": 1
+    },
+    "water_balance": {
+      "start_water_Mm3": 155.791237,
+      "inflow_volume_Mm3": 57.286656,
+      "outflow_Mm3": 94.582437,
+      "end_water_Mm3": 118.495456,
+      "waterbalance": -0.0,
+      "remaining_reservoir_GRESSE": 118.4307,
+      "remaining_pstation_SVEIGSHYL_II": 0.0,
+      "remaining_channel_DALSANA": 0.0648
+    },
+    "regime": {
+      "T": 365,
+      "active_Mm3": 61.44,
+      "init_active_Mm3": 49.152,
+      "inflow_Mm3": 57.286656,
+      "turbine_capacity_Mm3": 189.216,
+      "R": 0.32470826991374935,
+      "rho": 0.5625246067985794
+    }
+  },
+  "hjelle_e163": {
+    "cli_ok": true,
+    "log_findings": [],
+    "herss_load": {
+      "stps": 365,
+      "restprice": 101.0,
+      "nr_nodes": 3,
+      "nr_reservoirs": 1,
+      "nr_pstations": 1,
+      "nr_channels": 1
+    },
+    "water_balance": {
+      "start_water_Mm3": 7.342156,
+      "inflow_volume_Mm3": 92.320992,
+      "outflow_Mm3": 95.502268,
+      "end_water_Mm3": 4.16088,
+      "waterbalance": 0.0,
+      "remaining_reservoir_HJELLE": 4.1321,
+      "remaining_pstation_SVOLETJONN": 0.0,
+      "remaining_channel_VANAROSEN": 0.0288
+    },
+    "regime": {
+      "T": 365,
+      "active_Mm3": 9.0,
+      "init_active_Mm3": 6.3,
+      "inflow_Mm3": 92.320992,
+      "turbine_capacity_Mm3": 126.144,
+      "R": 0.07134703196347032,
+      "rho": 0.7818127853881278
+    }
+  }
+}
