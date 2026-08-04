@@ -10,8 +10,9 @@ NODE PSTATION 1 SVOLETJONN 0.0
 # CHANNELS.  Linear-reservoir storage initialised at the steady state for the
 # horizon-mean throughflow (2.9275 m3/s):  S = k_res * Q  with
 # k_res = K_TRAVELTIME_HOURS*3600/N_CASCADE_LINRES = 4800.0 s
-# (cascadedreservoirs.cpp:41,106).  Total channel storage = 0.042156 Mm3.
-# NODE CHANNEL IDNR NAME LINRES1_Mm3 LINRES2_Mm3 LINRES3_Mm3
+# (cascadedreservoirs.cpp:41,106).  3 linear reservoirs,
+# total channel storage = 0.042156 Mm3.
+# NODE CHANNEL IDNR NAME LINRES1_Mm3 ... LINRES3_Mm3
 NODE CHANNEL 2 VANAROSEN 0.014052 0.014052 0.014052
 
 ## END

@@ -1,0 +1,163 @@
+{
+  "instance": "res_casc_A",
+  "herss_version": "3.1.03",
+  "herss_version_date": "20260611",
+  "vf_tolerance_Euro": 0.05,
+  "worst_abs_dVF": 0.00042245982331223786,
+  "worst_sequence": "hatch_off_gen_full",
+  "passed": true,
+  "vf_rows": [
+    {
+      "sequence": "shipped_actions",
+      "vf_herss": 88996.50150875635,
+      "vf_replica": 88996.50148217581,
+      "abs_diff": 2.658054290805012e-05
+    },
+    {
+      "sequence": "all_zero",
+      "vf_herss": 32670.0,
+      "vf_replica": 32670.0,
+      "abs_diff": 0.0
+    },
+    {
+      "sequence": "hatch_full_gen_off",
+      "vf_herss": 32670.0,
+      "vf_replica": 32670.0,
+      "abs_diff": 0.0
+    },
+    {
+      "sequence": "hatch_off_gen_full",
+      "vf_herss": 36093.052696083774,
+      "vf_replica": 36093.0531185436,
+      "abs_diff": 0.00042245982331223786
+    },
+    {
+      "sequence": "all_full",
+      "vf_herss": 120168.77948048778,
+      "vf_replica": 120168.77943508624,
+      "abs_diff": 4.540153895504773e-05
+    },
+    {
+      "sequence": "gen_asymmetric",
+      "vf_herss": 92811.48232819818,
+      "vf_replica": 92811.48229077784,
+      "abs_diff": 3.742033732123673e-05
+    },
+    {
+      "sequence": "single_generator",
+      "vf_herss": 85128.71208473542,
+      "vf_replica": 85128.71204766617,
+      "abs_diff": 3.706925781443715e-05
+    },
+    {
+      "sequence": "alternating",
+      "vf_herss": 97863.26991188947,
+      "vf_replica": 97863.26986902632,
+      "abs_diff": 4.28631465183571e-05
+    },
+    {
+      "sequence": "threshold_0p01",
+      "vf_herss": 32663.99253166347,
+      "vf_replica": 32663.99253147154,
+      "abs_diff": 1.919288479257375e-07
+    },
+    {
+      "sequence": "drain_then_hold",
+      "vf_herss": 97519.19391381113,
+      "vf_replica": 97519.19384348497,
+      "abs_diff": 7.032616122160107e-05
+    },
+    {
+      "sequence": "bangbang_price",
+      "vf_herss": 91839.90747546991,
+      "vf_replica": 91839.90714803296,
+      "abs_diff": 0.00032743695192039013
+    },
+    {
+      "sequence": "random_seed1000",
+      "vf_herss": 90858.94375584762,
+      "vf_replica": 90858.94354418287,
+      "abs_diff": 0.000211664751986973
+    },
+    {
+      "sequence": "random_seed1001",
+      "vf_herss": 84132.56168460927,
+      "vf_replica": 84132.56147041217,
+      "abs_diff": 0.00021419710537884384
+    },
+    {
+      "sequence": "random_seed1002",
+      "vf_herss": 88710.51552947066,
+      "vf_replica": 88710.51547860511,
+      "abs_diff": 5.0865550292655826e-05
+    },
+    {
+      "sequence": "random_seed1003",
+      "vf_herss": 90129.5739580984,
+      "vf_replica": 90129.5740075765,
+      "abs_diff": 4.9478112487122416e-05
+    },
+    {
+      "sequence": "aggressive_stress",
+      "vf_herss": 42693.97645907467,
+      "vf_replica": 42693.97665175536,
+      "abs_diff": 0.0001926806871779263
+    }
+  ],
+  "trace_max_abs_diff": {
+    "shipped_actions": {
+      "res_Mm3_upper": 6.617759140681301e-08,
+      "res_Mm3_lower": 1.5295027466777356e-08,
+      "hatchflow_m3s": 0.0,
+      "tunnelflow_m3s": 0.0,
+      "overflow_Mm3_upper": 1.3824344946566924e-08,
+      "overflow_Mm3_lower": 2.968961777816137e-09,
+      "power_MWh": 1.2270646720935474e-08,
+      "profit": 0.00015412554375870968,
+      "aggressive_cost": 0.0,
+      "startstop_cost": 0.0,
+      "Hnetto": 1.3704948287340812e-08
+    },
+    "hatch_off_gen_full": {
+      "res_Mm3_upper": 6.274018993224217e-08,
+      "res_Mm3_lower": 1.7181155609335974e-08,
+      "hatchflow_m3s": 0.0,
+      "tunnelflow_m3s": 0.0,
+      "overflow_Mm3_upper": 1.3106316920641348e-08,
+      "overflow_Mm3_lower": 0.0,
+      "power_MWh": 2.1185172727200552e-08,
+      "profit": 0.00024969935111585073,
+      "aggressive_cost": 1.7181155612888688e-05,
+      "startstop_cost": 0.0,
+      "Hnetto": 1.331852672592504e-08
+    },
+    "alternating": {
+      "res_Mm3_upper": 8.787352356875999e-08,
+      "res_Mm3_lower": 1.8613876662243456e-08,
+      "hatchflow_m3s": 0.0,
+      "tunnelflow_m3s": 0.0,
+      "overflow_Mm3_upper": 1.8356564379651275e-08,
+      "overflow_Mm3_lower": 2.0061561370465775e-09,
+      "power_MWh": 1.3294013001541316e-08,
+      "profit": 0.00017538991778565105,
+      "aggressive_cost": 0.0,
+      "startstop_cost": 0.0,
+      "Hnetto": 1.671514837653376e-08
+    },
+    "random_seed1000": {
+      "res_Mm3_upper": 8.787361771567248e-08,
+      "res_Mm3_lower": 2.1607984734828278e-08,
+      "hatchflow_m3s": 0.0,
+      "tunnelflow_m3s": 8.881784197001252e-16,
+      "overflow_Mm3_upper": 1.8356466180424746e-08,
+      "overflow_Mm3_lower": 1.5199402847443366e-09,
+      "power_MWh": 2.356817674353806e-08,
+      "profit": 0.00012423869247868424,
+      "aggressive_cost": 0.0,
+      "startstop_cost": 0.0,
+      "Hnetto": 1.9815615814877674e-08
+    }
+  },
+  "seconds_vf": 0.15030837059020996,
+  "seconds_traces": 38.18629264831543
+}

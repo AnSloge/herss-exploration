@@ -1,0 +1,36 @@
+{
+  "instance": "res_casc_A_vkorr",
+  "value_upper_storage": true,
+  "git_commit": "f56237ffe3038d48d4fd42c47480689a63b6cc62",
+  "herss_version": "3.1.03",
+  "herss_version_date": "20260611",
+  "seeds": [
+    1,
+    2
+  ],
+  "restprice": 33.0,
+  "regime": {
+    "T": 30,
+    "dt_seconds": 86400,
+    "active_Mm3_upper": 9.0,
+    "active_Mm3_lower": 9.0,
+    "init_active_Mm3_upper": 7.74,
+    "init_active_Mm3_lower": 7.11,
+    "inflow_Mm3_upper": 12.223008,
+    "inflow_Mm3_lower": 4.443552,
+    "station_capacity_Mm3": 20.736,
+    "hatch_capacity_Mm3": 15.552,
+    "R_system": 0.8680555555555556,
+    "rho_system": 1.5198958333333334,
+    "available_upper_Mm3": 19.963008000000002,
+    "hatch_binding_ratio": 1.28362962962963,
+    "rho_lower_max": 1.307173611111111
+  },
+  "started": "2026-08-03 23:41:47",
+  "dt_verified": {
+    "distinct": [
+      86400
+    ],
+    "T": 30
+  }
+}

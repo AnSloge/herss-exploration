@@ -1,0 +1,31 @@
+Riversystem KROKNESVATN_daily
+Node Idnr Nodename          Nodetype int Nodetypename Remaining_Mm3
+Node  0 KROKNESVATN          Nodetype 0  RESERVOIR             157.5626 
+Node  1 EASTER               Nodetype 1  PSTATION              0.0000 
+Node  2 HYNNEKLEIV           Nodetype 2  CHANNEL               0.0706 
+-------------------------------------------
+GLOBAL WATERBALANCE
+start_water_Mm3   = 150.891840
+inflow_volume_Mm3 = 161.270784
+outflow_Mm3       = 154.529480
+end_water_Mm3     = 157.633144
+waterbalance      = 0.000000
+Note that there might be dead water below LRW in the system
+-------------------------------------------
+Average_price_Euro           = 137.878
+RestPrice_Euro               = 101.000
+tot_remaining_Mm3            = 157.633
+tot_active_remaining_Mm3     = 138.263
+tot_remaining_MWh            = 15208.884
+tot_remaining_Euro           = 1536097.307
+Sum_Production_MWh           = 64784.182
+tot_income_Euro              = 8903901.690
+Avg_achieved_price_E_MWh     = 137.439
+sum_qmin_cost_Euro           = 0.000
+sum_lrw_cost_Euro            = 0.000
+sum_startstopcost_Euro       = 1.000
+sum_max_adjustment_cost      = 0.000
+sum_aggressive_actions_cost  = 0.000
+tot_cost_Euro                = 1.000
+tot_profit_Euro              = 8903900.690
+valuefunction_Euro           = 10439997.996

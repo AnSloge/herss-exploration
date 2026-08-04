@@ -136,8 +136,14 @@ def main():
               f"(active {reg['active_Mm3']:.2f}, init {reg['init_active_Mm3']:.3f}, "
               f"inflow {reg['inflow_Mm3']:.3f}, capacity {reg['turbine_capacity_Mm3']:.3f} Mm3)")
         if reg["rho"] > 1.0:
-            print("  !! rho > 1 -- NOT the scarcity regime. The slice did not do what it should.")
-            all_ok = False
+            # Non-fatal since 2026-08-03. This guard was written for the
+            # scarcity-regime study, where rho > 1 meant the slice had failed to
+            # do its job. The multi-instance study deliberately places TOPPSY at
+            # rho ~ 1.02 to sample the boundary, so rho > 1 is now a property to
+            # record, not an error. Instance validity is decided by the CLI run,
+            # the Diagnose calls and the water balance above.
+            print("  note: rho > 1 -- abundance side of the boundary "
+                  "(deliberate for the rho-axis instances; not a failure)")
 
         report[key] = entry
         print()

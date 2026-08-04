@@ -1,0 +1,31 @@
+Riversystem TOPPSY_daily
+Node Idnr Nodename          Nodetype int Nodetypename Remaining_Mm3
+Node  0 TOPPSY               Nodetype 0  RESERVOIR             364.6817 
+Node  1 SVEIGSHYL_I          Nodetype 1  PSTATION              0.0000 
+Node  2 DALSANA              Nodetype 2  CHANNEL               0.0637 
+-------------------------------------------
+GLOBAL WATERBALANCE
+start_water_Mm3   = 382.557513
+inflow_volume_Mm3 = 75.206880
+outflow_Mm3       = 93.018993
+end_water_Mm3     = 364.745400
+waterbalance      = 0.000000
+Note that there might be dead water below LRW in the system
+-------------------------------------------
+Average_price_Euro           = 137.878
+RestPrice_Euro               = 101.000
+tot_remaining_Mm3            = 364.745
+tot_active_remaining_Mm3     = 96.152
+tot_remaining_MWh            = 10576.685
+tot_remaining_Euro           = 1068245.164
+Sum_Production_MWh           = 12931.118
+tot_income_Euro              = 1795259.745
+Avg_achieved_price_E_MWh     = 138.833
+sum_qmin_cost_Euro           = 0.000
+sum_lrw_cost_Euro            = 0.000
+sum_startstopcost_Euro       = 1.000
+sum_max_adjustment_cost      = 0.000
+sum_aggressive_actions_cost  = 0.000
+tot_cost_Euro                = 1.000
+tot_profit_Euro              = 1795258.745
+valuefunction_Euro           = 2863503.909

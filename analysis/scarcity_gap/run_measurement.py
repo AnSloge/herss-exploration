@@ -45,7 +45,10 @@ def real_vf(key, actions):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("instance", choices=["hjelle", "gresse", "mini", "hjelle_e163"])
+    # Instance keys come from params.INSTANCES rather than a hardcoded list: the
+    # synthetic rho/R grid registers its cells there programmatically, and a
+    # fixed choices= list would silently exclude them.
+    ap.add_argument("instance", choices=sorted(INSTANCES))
     ap.add_argument("--energy-equivalent", type=float, default=None,
                     help="override LOCAL_ENERGY_EQUIVALENT (sensitivity run)")
     ap.add_argument("--n-grid", type=int, default=None)
@@ -75,8 +78,13 @@ def main():
           f"active={reg['active_Mm3']:.2f} Mm3  init={reg['init_active_Mm3']:.2f} Mm3  "
           f"inflow={reg['inflow_Mm3']:.2f} Mm3  turbine cap={reg['turbine_capacity_Mm3']:.2f} Mm3")
     if reg["rho"] > 1.0:
-        print("!! rho > 1: this is NOT the scarcity regime. Stopping.")
-        return 2
+        # Non-fatal since 2026-08-03. This guard belonged to the scarcity-regime
+        # study, where an instance with rho > 1 meant the slice had failed to do
+        # its job and measuring it would waste an hour. The multi-instance study
+        # deliberately samples the rho ~ 1 boundary (TOPPSY sits at 1.017), so
+        # abundance is now a property to measure, not a reason to stop.
+        print("note: rho > 1 -- abundance side of the boundary. Measuring anyway "
+              "(deliberate for the rho-axis instances).")
     print(f"Water value: {restprice * p.local_energy_equivalent * 1000:.0f} EUR/Mm3   "
           f"(price median {np.median(prices):.2f}, mean {np.mean(prices):.2f})")
     print()

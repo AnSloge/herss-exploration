@@ -1,0 +1,81 @@
+##########################################################################
+# TOPOLOGY FILE -- TOPPSY single-reservoir slice of uTAHPS
+#
+# Extracted verbatim from data/utahps_daily/topology_utahps.txt (nodes 5, 6, 8)
+# by analysis/scarcity_gap/build_instances.py. No physical parameter changed.
+# Structural edits, all forced by riversystem.cpp:58 (idnr = file position):
+#   reservoir   5 TOPPSY       -> 0
+#   pstation    6 SVEIGSHYL_I  -> 1   (OUTLET_TUNNEL 6 -> 1)
+#   channel     8 DALSANA      -> 2   (DOWNLINK_IDNR 8 -> 2), outlet (-9)
+#   OVERFLOW_CURVE target 8 -> 2. Value-neutral: overflow leaves the system and
+#   never enters income or the terminal term.
+##########################################################################
+
+##########################################################################
+# TOPPSY RESERVOIR
+NODE RESERVOIR 0 TOPPSY
+HRW 650.00
+LRW 620.00
+RES_PENALTY 300
+# Reservoir curve, points, [masl, Mm3]
+RESERVOIR_CURVE 10
+610.00	0.0
+619.00	265.00
+620.00	268.53
+630.00	308.33
+640.00	352.87
+650.00	395.17
+660.00	467.73
+670.00	538.94
+680.00	650.00
+690.00	1000.0
+# Overflow curve, points, downstream idnr [masl, m3s]
+OVERFLOW_CURVE 3 2
+650.00	0.0
+680.00	100.0
+690.00	500.0
+OUTLET_HATCH -9999
+OUTLET_TUNNEL 1
+OUTLET_AUTO_QMIN -9999
+ENDNODE
+########################################################################################
+
+#########################################################################################
+# SVEIGSHYL_I POWERSTATION, TOPPSY IS INTAKE
+NODE PSTATION 1 SVEIGSHYL_I
+DOWNLINK_IDNR 2
+# Turbine efficiency curve [M3s, %]
+NR_GENERATORS 1
+GENERATOR 0
+TURBINE_CURVE 10
+0.00	0.0
+1.48	50.0
+2.54	80.0
+3.36	90.0
+4.13	93.0
+4.72	93.0
+5.13	93.0
+5.43	92.0
+5.61	91.0
+5.90	90.0
+GENERATOR_MAX_DISCHARGE 5.9
+STATIC_GENERATOR_EFFICIENCY 0.96
+HEADLOSSCOEF 0.2
+POWSTAT_MASL 581.0
+POWSTAT_MIN_DISCHARGE 0.0
+POWSTAT_MAX_DISCHARGE 5.9
+POWSTAT_STARTSTOP 2.0
+LOCAL_ENERGY_EQUIVALENT 0.11
+AUTO_QMIN -9999
+MAX_ADJUST -9999
+ENDNODE
+#########################################################################################
+
+########################################################################################
+# System outlet. Downstream id -9 (was 9 = KROKNESVATN in the full cascade).
+NODE CHANNEL 2 DALSANA -9
+N_CASCADE_LINRES 3
+K_TRAVELTIME_HOURS 6
+QMIN -9999
+ENDNODE
+########################################################################################

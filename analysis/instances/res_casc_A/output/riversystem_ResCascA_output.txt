@@ -1,0 +1,34 @@
+Riversystem ResCascA
+Node Idnr Nodename          Nodetype int Nodetypename Remaining_Mm3
+Node  0 RES_A                Nodetype 0  RESERVOIR             10.8515 
+Node  1 RES_B                Nodetype 0  RESERVOIR             11.0121 
+Node  2 CHAN2                Nodetype 2  CHANNEL               0.0310 
+Node  3 CHAN3                Nodetype 2  CHANNEL               0.0521 
+Node  4 PSTAT_B              Nodetype 1  PSTATION              0.0000 
+Node  5 CHANNEL5             Nodetype 2  CHANNEL               0.0856 
+-------------------------------------------
+GLOBAL WATERBALANCE
+start_water_Mm3   = 16.915809
+inflow_volume_Mm3 = 16.666560
+outflow_Mm3       = 11.550107
+end_water_Mm3     = 22.032261
+waterbalance      = 0.000000
+Note that there might be dead water below LRW in the system
+-------------------------------------------
+Average_price_Euro           = 44.774
+RestPrice_Euro               = 33.000
+tot_remaining_Mm3            = 22.032
+tot_active_remaining_Mm3     = 18.000
+tot_remaining_MWh            = 990.000
+tot_remaining_Euro           = 32670.000
+Sum_Production_MWh           = 1259.869
+tot_income_Euro              = 56335.502
+Avg_achieved_price_E_MWh     = 44.715
+sum_qmin_cost_Euro           = 0.000
+sum_lrw_cost_Euro            = 0.000
+sum_startstopcost_Euro       = 9.000
+sum_max_adjustment_cost      = 0.000
+sum_aggressive_actions_cost  = 0.000
+tot_cost_Euro                = 9.000
+tot_profit_Euro              = 56326.502
+valuefunction_Euro           = 88996.502

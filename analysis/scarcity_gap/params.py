@@ -187,12 +187,161 @@ HJELLE_DAILY_E163 = InstanceParams(
        "local_energy_equivalent": 0.163}
 )
 
+# analysis/instances/toppsy_daily/topology.txt  (verbatim from utahps_daily)
+# Added 2026-08-03. Cascade node: in the full uTAHPS it also receives GRESSE's
+# and HJELLE's outflow, so the slice's rho is a LOWER bound on the real one.
+TOPPSY_DAILY = InstanceParams(
+    name="toppsy_daily",
+    dataset_dir=os.path.join(REPO, "analysis", "instances", "toppsy_daily") + "/",
+    pricefile="pricefile.txt",
+    inflowfile="inflowseries.txt",
+    globalfile="global.txt",
+    dt_seconds=86400,
+    reservoir_init_fr=0.9,
+    HRW=650.0, LRW=620.0, RES_PENALTY=300.0,
+    reservoir_curve_masl=_a(610, 619, 620, 630, 640, 650, 660, 670, 680, 690),
+    reservoir_curve_Mm3=_a(0.0, 265.00, 268.53, 308.33, 352.87, 395.17,
+                           467.73, 538.94, 650.00, 1000.0),
+    overflow_curve_masl=_a(650.0, 680.0, 690.0),
+    overflow_curve_m3s=_a(0.0, 100.0, 500.0),
+    generator_max_discharge=5.9,
+    static_generator_efficiency=0.96,
+    headlosscoef=0.2,
+    powstat_masl=581.0,
+    powstat_startstop=2.0,
+    local_energy_equivalent=0.11,
+    turbine_curve_q=_a(0.00, 1.48, 2.54, 3.36, 4.13, 4.72, 5.13, 5.43, 5.61, 5.90),
+    turbine_curve_pct=_a(0.0, 50.0, 80.0, 90.0, 93.0, 93.0, 93.0, 92.0, 91.0, 90.0),
+)
+
+# analysis/instances/kroknesvatn_daily/topology.txt  (verbatim from utahps_daily)
+# The deepest reservoir in the system: 100 m of regulated range against HJELLE's
+# 9 m, and a four-point overflow curve.
+KROKNESVATN_DAILY = InstanceParams(
+    name="kroknesvatn_daily",
+    dataset_dir=os.path.join(REPO, "analysis", "instances", "kroknesvatn_daily") + "/",
+    pricefile="pricefile.txt",
+    inflowfile="inflowseries.txt",
+    globalfile="global.txt",
+    dt_seconds=86400,
+    reservoir_init_fr=0.66,
+    HRW=433.0, LRW=333.0, RES_PENALTY=300.0,
+    reservoir_curve_masl=_a(300, 333, 343, 353, 363, 373, 383, 393, 403, 413,
+                            423, 433, 435, 440),
+    reservoir_curve_Mm3=_a(0.0, 19.30, 31.08, 44.75, 60.14, 77.21, 96.01,
+                           116.70, 139.28, 163.78, 190.23, 218.57, 300.0, 1000.0),
+    overflow_curve_masl=_a(433.0, 434.0, 435.0, 440.0),
+    overflow_curve_m3s=_a(0.0, 10.0, 100.0, 2000.0),
+    generator_max_discharge=9.80,
+    static_generator_efficiency=0.96,
+    headlosscoef=0.145,
+    powstat_masl=218.0,
+    powstat_startstop=2.0,
+    local_energy_equivalent=0.11,
+    turbine_curve_q=_a(0.00, 2.45, 4.21, 5.59, 6.86, 7.84, 8.53, 9.02, 9.31, 9.80),
+    turbine_curve_pct=_a(0.0, 50.0, 80.0, 90.0, 93.0, 93.0, 93.0, 92.0, 91.0, 90.0),
+)
+
+# ----------------------------------------------------- synthetic rho/R grid
+#
+# SYNTHETIC INSTANCES. These are NOT slices of uTAHPS and must never be mixed
+# into conclusions about it. They exist for one purpose: rho and R move together
+# in every real instance measured so far (HJELLE 0.78/0.07, GRESSE 0.56/0.32,
+# TOPPSY 1.02/0.68, KROKNESVATN 0.95/0.64), so the mechanism behind the gap is
+# not identified. This grid varies one at a time.
+#
+# R is scaled by scaling the whole reservoir curve, V'(masl) = s * V(masl), with
+# LRW and HRW left at 748/757 masl. Head as a function of LEVEL is therefore
+# unchanged; what changes is the volume per metre. Two consequences must be
+# stated whenever these results are used:
+#
+#   - The construction is not physically realisable: a real reservoir holding
+#     four times the volume would not have the same 9 m regulated range. So this
+#     isolates R AT CONSTANT HEAD SPAN, which is a narrower claim than
+#     "isolates R".
+#   - Scaling the curve also scales the initial active storage at a fixed
+#     init_fr, which would drag rho along with R -- exactly the confound being
+#     removed. The inflow series is therefore rescaled to hold rho at its target:
+#
+#         rho = (init_fr * s * active_0 + k * inflow_0) / turbine_capacity
+#     =>  k   = (rho_target * turbine_capacity - init_fr * s * active_0) / inflow_0
+#
+#     so each cell hits its rho exactly, independently of s.
+
+_HJELLE_ACTIVE_0 = 9.0          # HRW - LRW filling on the unscaled curve [Mm3]
+_HJELLE_INIT_FR = 0.7
+_HJELLE_INFLOW_0_Mm3 = None     # filled lazily from the instance's own file
+_HJELLE_CAPACITY_Mm3 = 4.0 * 86400 * 365 / 1e6
+
+
+def hjelle_inflow_total_Mm3():
+    global _HJELLE_INFLOW_0_Mm3
+    if _HJELLE_INFLOW_0_Mm3 is None:
+        _, inflows, _ = load_series(HJELLE_DAILY)
+        _HJELLE_INFLOW_0_Mm3 = sum(inflows) * 86400 / 1e6
+    return _HJELLE_INFLOW_0_Mm3
+
+
+def synthetic_inflow_scale(rho_target, R_scale):
+    """k such that the resulting instance has exactly rho = rho_target."""
+    init_active = _HJELLE_INIT_FR * R_scale * _HJELLE_ACTIVE_0
+    return (rho_target * _HJELLE_CAPACITY_Mm3 - init_active) / hjelle_inflow_total_Mm3()
+
+
+def synthetic_slug(rho_target, R_scale):
+    return f"syn_rho{rho_target:g}_R{R_scale:g}".replace(".", "p")
+
+
+def make_synthetic_hjelle(rho_target, R_scale):
+    """HJELLE with the reservoir curve scaled by R_scale and inflow rescaled."""
+    slug = synthetic_slug(rho_target, R_scale)
+    return InstanceParams(
+        name=slug,
+        dataset_dir=os.path.join(REPO, "analysis", "instances", slug) + "/",
+        pricefile="pricefile.txt", inflowfile="inflowseries.txt",
+        globalfile="global.txt",
+        dt_seconds=86400,
+        reservoir_init_fr=_HJELLE_INIT_FR,
+        HRW=757.0, LRW=748.0, RES_PENALTY=300.0,
+        reservoir_curve_masl=HJELLE_DAILY.reservoir_curve_masl.copy(),
+        reservoir_curve_Mm3=HJELLE_DAILY.reservoir_curve_Mm3 * R_scale,
+        overflow_curve_masl=HJELLE_DAILY.overflow_curve_masl.copy(),
+        overflow_curve_m3s=HJELLE_DAILY.overflow_curve_m3s.copy(),
+        generator_max_discharge=4.0,
+        static_generator_efficiency=0.96,
+        headlosscoef=0.3,
+        powstat_masl=690.0,
+        powstat_startstop=2.0,
+        local_energy_equivalent=0.11,
+        turbine_curve_q=HJELLE_DAILY.turbine_curve_q.copy(),
+        turbine_curve_pct=HJELLE_DAILY.turbine_curve_pct.copy(),
+    )
+
+
+SYNTHETIC_RHO = (0.5, 0.75, 1.0, 1.25)
+SYNTHETIC_R_SCALE = (0.5, 1.0, 2.0, 4.0)
+
+# Priority order for a limited night: the R_scale = 1 row and the rho = 1 column
+# first (they cross at one cell), then the diagonal.
+SYNTHETIC_PRIORITY = (
+    [(r, 1.0) for r in SYNTHETIC_RHO]
+    + [(1.0, s) for s in SYNTHETIC_R_SCALE if s != 1.0]
+    + [(r, s) for r, s in zip(SYNTHETIC_RHO, SYNTHETIC_R_SCALE)
+       if s != 1.0 and r != 1.0]
+)
+
 INSTANCES = {
     "mini": MINI_UTAHPS_DAILY,
     "hjelle": HJELLE_DAILY,
     "gresse": GRESSE_DAILY,
     "hjelle_e163": HJELLE_DAILY_E163,
+    "toppsy": TOPPSY_DAILY,
+    "kroknesvatn": KROKNESVATN_DAILY,
 }
+
+for _r in SYNTHETIC_RHO:
+    for _s in SYNTHETIC_R_SCALE:
+        INSTANCES[synthetic_slug(_r, _s)] = make_synthetic_hjelle(_r, _s)
 
 
 def load_series(p):

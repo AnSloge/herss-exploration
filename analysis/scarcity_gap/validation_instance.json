@@ -1,5 +1,5 @@
 {
-  "hjelle": {
+  "syn_rho1_R4": {
     "cli_ok": true,
     "log_findings": [],
     "herss_load": {
@@ -11,26 +11,26 @@
       "nr_channels": 1
     },
     "water_balance": {
-      "start_water_Mm3": 7.342156,
-      "inflow_volume_Mm3": 92.320992,
-      "outflow_Mm3": 95.502268,
-      "end_water_Mm3": 4.16088,
+      "start_water_Mm3": 29.246092,
+      "inflow_volume_Mm3": 100.944,
+      "outflow_Mm3": 92.101814,
+      "end_water_Mm3": 38.088277,
       "waterbalance": 0.0,
-      "remaining_reservoir_HJELLE": 4.1321,
+      "remaining_reservoir_SYN_RHO1_R4": 38.0595,
       "remaining_pstation_SVOLETJONN": 0.0,
       "remaining_channel_VANAROSEN": 0.0288
     },
     "regime": {
       "T": 365,
-      "active_Mm3": 9.0,
-      "init_active_Mm3": 6.3,
-      "inflow_Mm3": 92.320992,
+      "active_Mm3": 36.0,
+      "init_active_Mm3": 25.2,
+      "inflow_Mm3": 100.9439995392,
       "turbine_capacity_Mm3": 126.144,
-      "R": 0.07134703196347032,
-      "rho": 0.7818127853881278
+      "R": 0.2853881278538813,
+      "rho": 0.9999999963470318
     }
   },
-  "gresse": {
+  "syn_rho1_R0p5": {
     "cli_ok": true,
     "log_findings": [],
     "herss_load": {
@@ -42,54 +42,54 @@
       "nr_channels": 1
     },
     "water_balance": {
-      "start_water_Mm3": 155.791237,
-      "inflow_volume_Mm3": 57.286656,
-      "outflow_Mm3": 94.582437,
-      "end_water_Mm3": 118.495456,
-      "waterbalance": -0.0,
-      "remaining_reservoir_GRESSE": 118.4307,
-      "remaining_pstation_SVEIGSHYL_II": 0.0,
-      "remaining_channel_DALSANA": 0.0648
-    },
-    "regime": {
-      "T": 365,
-      "active_Mm3": 61.44,
-      "init_active_Mm3": 49.152,
-      "inflow_Mm3": 57.286656,
-      "turbine_capacity_Mm3": 189.216,
-      "R": 0.32470826991374935,
-      "rho": 0.5625246067985794
-    }
-  },
-  "hjelle_e163": {
-    "cli_ok": true,
-    "log_findings": [],
-    "herss_load": {
-      "stps": 365,
-      "restprice": 101.0,
-      "nr_nodes": 3,
-      "nr_reservoirs": 1,
-      "nr_pstations": 1,
-      "nr_channels": 1
-    },
-    "water_balance": {
-      "start_water_Mm3": 7.342156,
-      "inflow_volume_Mm3": 92.320992,
-      "outflow_Mm3": 95.502268,
-      "end_water_Mm3": 4.16088,
+      "start_water_Mm3": 3.706163,
+      "inflow_volume_Mm3": 122.994,
+      "outflow_Mm3": 125.119133,
+      "end_water_Mm3": 1.58103,
       "waterbalance": 0.0,
-      "remaining_reservoir_HJELLE": 4.1321,
+      "remaining_reservoir_SYN_RHO1_R0P5": 1.5522,
       "remaining_pstation_SVOLETJONN": 0.0,
       "remaining_channel_VANAROSEN": 0.0288
     },
     "regime": {
       "T": 365,
-      "active_Mm3": 9.0,
-      "init_active_Mm3": 6.3,
-      "inflow_Mm3": 92.320992,
+      "active_Mm3": 4.5,
+      "init_active_Mm3": 3.15,
+      "inflow_Mm3": 122.99400028800001,
       "turbine_capacity_Mm3": 126.144,
-      "R": 0.07134703196347032,
-      "rho": 0.7818127853881278
+      "R": 0.03567351598173516,
+      "rho": 1.000000002283105
+    }
+  },
+  "syn_rho1p25_R4": {
+    "cli_ok": true,
+    "log_findings": [],
+    "herss_load": {
+      "stps": 365,
+      "restprice": 101.0,
+      "nr_nodes": 3,
+      "nr_reservoirs": 1,
+      "nr_pstations": 1,
+      "nr_channels": 1
+    },
+    "water_balance": {
+      "start_water_Mm3": 29.260492,
+      "inflow_volume_Mm3": 132.48,
+      "outflow_Mm3": 121.576422,
+      "end_water_Mm3": 40.164069,
+      "waterbalance": 0.0,
+      "remaining_reservoir_SYN_RHO1P25_R4": 40.1342,
+      "remaining_pstation_SVOLETJONN": 0.0,
+      "remaining_channel_VANAROSEN": 0.0298
+    },
+    "regime": {
+      "T": 365,
+      "active_Mm3": 36.0,
+      "init_active_Mm3": 25.2,
+      "inflow_Mm3": 132.47999953919998,
+      "turbine_capacity_Mm3": 126.144,
+      "R": 0.2853881278538813,
+      "rho": 1.2499999963470316
     }
   }
 }

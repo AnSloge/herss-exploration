@@ -41,6 +41,7 @@ RES_PENALTY and LOCAL_ENERGY_EQUIVALENT are byte-for-byte from utahps_daily.
 """
 
 import os
+import sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SRC = os.path.join(REPO, "data", "utahps_daily")
@@ -220,6 +221,181 @@ ENDNODE
 """
 
 
+TOPPSY_TOPOLOGY = """\
+##########################################################################
+# TOPOLOGY FILE -- TOPPSY single-reservoir slice of uTAHPS
+#
+# Extracted verbatim from data/utahps_daily/topology_utahps.txt (nodes 5, 6, 8)
+# by analysis/scarcity_gap/build_instances.py. No physical parameter changed.
+# Structural edits, all forced by riversystem.cpp:58 (idnr = file position):
+#   reservoir   5 TOPPSY       -> 0
+#   pstation    6 SVEIGSHYL_I  -> 1   (OUTLET_TUNNEL 6 -> 1)
+#   channel     8 DALSANA      -> 2   (DOWNLINK_IDNR 8 -> 2), outlet (-9)
+#   OVERFLOW_CURVE target 8 -> 2. Value-neutral: overflow leaves the system and
+#   never enters income or the terminal term.
+##########################################################################
+
+##########################################################################
+# TOPPSY RESERVOIR
+NODE RESERVOIR 0 TOPPSY
+HRW 650.00
+LRW 620.00
+RES_PENALTY 300
+# Reservoir curve, points, [masl, Mm3]
+RESERVOIR_CURVE 10
+610.00	0.0
+619.00	265.00
+620.00	268.53
+630.00	308.33
+640.00	352.87
+650.00	395.17
+660.00	467.73
+670.00	538.94
+680.00	650.00
+690.00	1000.0
+# Overflow curve, points, downstream idnr [masl, m3s]
+OVERFLOW_CURVE 3 2
+650.00	0.0
+680.00	100.0
+690.00	500.0
+OUTLET_HATCH -9999
+OUTLET_TUNNEL 1
+OUTLET_AUTO_QMIN -9999
+ENDNODE
+########################################################################################
+
+#########################################################################################
+# SVEIGSHYL_I POWERSTATION, TOPPSY IS INTAKE
+NODE PSTATION 1 SVEIGSHYL_I
+DOWNLINK_IDNR 2
+# Turbine efficiency curve [M3s, %]
+NR_GENERATORS 1
+GENERATOR 0
+TURBINE_CURVE 10
+0.00	0.0
+1.48	50.0
+2.54	80.0
+3.36	90.0
+4.13	93.0
+4.72	93.0
+5.13	93.0
+5.43	92.0
+5.61	91.0
+5.90	90.0
+GENERATOR_MAX_DISCHARGE 5.9
+STATIC_GENERATOR_EFFICIENCY 0.96
+HEADLOSSCOEF 0.2
+POWSTAT_MASL 581.0
+POWSTAT_MIN_DISCHARGE 0.0
+POWSTAT_MAX_DISCHARGE 5.9
+POWSTAT_STARTSTOP 2.0
+LOCAL_ENERGY_EQUIVALENT 0.11
+AUTO_QMIN -9999
+MAX_ADJUST -9999
+ENDNODE
+#########################################################################################
+
+########################################################################################
+# System outlet. Downstream id -9 (was 9 = KROKNESVATN in the full cascade).
+NODE CHANNEL 2 DALSANA -9
+N_CASCADE_LINRES 3
+K_TRAVELTIME_HOURS 6
+QMIN -9999
+ENDNODE
+########################################################################################
+"""
+
+
+KROKNESVATN_TOPOLOGY = """\
+##########################################################################
+# TOPOLOGY FILE -- KROKNESVATN single-reservoir slice of uTAHPS
+#
+# Extracted verbatim from data/utahps_daily/topology_utahps.txt (nodes 9, 10, 11)
+# by analysis/scarcity_gap/build_instances.py. No physical parameter changed.
+# Structural edits, all forced by riversystem.cpp:58 (idnr = file position):
+#   reservoir   9 KROKNESVATN -> 0
+#   pstation   10 EASTER      -> 1   (OUTLET_TUNNEL 10 -> 1)
+#   channel    11 HYNNEKLEIV  -> 2   (DOWNLINK_IDNR 11 -> 2), already the outlet
+#   OVERFLOW_CURVE target 11 -> 2.
+# Note N_CASCADE_LINRES 2 here, not 3 as in the other slices.
+##########################################################################
+
+##########################################################################
+# KROKNESVATN RESERVOIR
+NODE RESERVOIR 0 KROKNESVATN
+HRW 433.00
+LRW 333.00
+RES_PENALTY 300
+# Reservoir curve, points, [masl, Mm3]
+RESERVOIR_CURVE 14
+300.00	0.0
+333.00	19.30
+343.00	31.08
+353.00	44.75
+363.00	60.14
+373.00	77.21
+383.00	96.01
+393.00	116.70
+403.00	139.28
+413.00	163.78
+423.00	190.23
+433.00	218.57
+435.00  300.0
+440.00  1000.0
+# Overflow curve, points, downstream idnr   [masl, m3s]
+OVERFLOW_CURVE 4 2
+433.0	0.0
+434.0	10.0
+435.0	100.0
+440.0	2000.0
+OUTLET_HATCH -9999
+OUTLET_TUNNEL 1
+OUTLET_AUTO_QMIN -9999
+ENDNODE
+#########################################################################################
+
+#########################################################################################
+# EASTER POWERSTATION, KROKNESVATN IS INTAKE
+NODE PSTATION 1 EASTER
+DOWNLINK_IDNR 2
+NR_GENERATORS 1
+GENERATOR 0
+# Turbine efficiency curve [M3s, %]
+TURBINE_CURVE 10
+0.00	0.00
+2.45	50.00
+4.21	80.00
+5.59	90.00
+6.86	93.00
+7.84	93.00
+8.53	93.00
+9.02	92.00
+9.31	91.00
+9.80	90.00
+GENERATOR_MAX_DISCHARGE 9.80
+STATIC_GENERATOR_EFFICIENCY 0.96
+HEADLOSSCOEF 0.145
+POWSTAT_MASL 218.0
+POWSTAT_MIN_DISCHARGE 0.0
+POWSTAT_MAX_DISCHARGE 9.8
+POWSTAT_STARTSTOP 2.0
+LOCAL_ENERGY_EQUIVALENT 0.11
+AUTO_QMIN -9999
+MAX_ADJUST -9999
+ENDNODE
+#########################################################################################
+
+########################################################################################
+# System outlet, unchanged (-9 already in the full cascade).
+NODE CHANNEL 2 HYNNEKLEIV -9
+N_CASCADE_LINRES 2
+K_TRAVELTIME_HOURS 4
+QMIN -9999
+ENDNODE
+########################################################################################
+"""
+
+
 GLOBAL_TEMPLATE = """\
 # Global configuration file for the {name} single-reservoir slice of uTAHPS.
 # Generated by analysis/scarcity_gap/build_instances.py -- do not hand-edit.
@@ -257,9 +433,10 @@ NODE PSTATION 1 {pst_name} 0.0
 # CHANNELS.  Linear-reservoir storage initialised at the steady state for the
 # horizon-mean throughflow ({mean_q:.4f} m3/s):  S = k_res * Q  with
 # k_res = K_TRAVELTIME_HOURS*3600/N_CASCADE_LINRES = {k_res:.1f} s
-# (cascadedreservoirs.cpp:41,106).  Total channel storage = {total:.6f} Mm3.
-# NODE CHANNEL IDNR NAME LINRES1_Mm3 LINRES2_Mm3 LINRES3_Mm3
-NODE CHANNEL 2 {chn_name} {s:.6f} {s:.6f} {s:.6f}
+# (cascadedreservoirs.cpp:41,106).  {n_linres} linear reservoirs,
+# total channel storage = {total:.6f} Mm3.
+# NODE CHANNEL IDNR NAME LINRES1_Mm3 ... LINRES{n_linres}_Mm3
+NODE CHANNEL 2 {chn_name} {storages}
 
 ## END
 """
@@ -314,8 +491,9 @@ def build(slug, systemname, res_name, pst_name, chn_name, topology,
     with open(os.path.join(d, "start_state.txt"), "w") as f:
         f.write(START_STATE_TEMPLATE.format(
             name=res_name, res_name=res_name, pst_name=pst_name, chn_name=chn_name,
-            init_fr=init_fr, mean_q=mean_q, k_res=k_res, s=s_Mm3,
-            total=3 * s_Mm3))
+            init_fr=init_fr, mean_q=mean_q, k_res=k_res, n_linres=n_linres,
+            storages=" ".join(f"{s_Mm3:.6f}" for _ in range(n_linres)),
+            total=n_linres * s_Mm3))
 
     # Neutral action file (constant 0.5) -- the shipped uTAHPS action file is
     # for the full cascade and is not meaningful here. Column header is
@@ -328,7 +506,7 @@ def build(slug, systemname, res_name, pst_name, chn_name, topology,
 
     print(f"{slug}: T={T}, mean inflow={mean_q:.4f} m3/s, "
           f"sum={sum(inflow)*DT_SECONDS/1e6:.2f} Mm3, "
-          f"channel init {s_Mm3:.6f} Mm3 x{n_linres} = {3*s_Mm3:.6f} Mm3")
+          f"channel init {s_Mm3:.6f} Mm3 x{n_linres} = {n_linres*s_Mm3:.6f} Mm3")
     return d
 
 
@@ -379,9 +557,118 @@ def build_sensitivity_e163():
     return dst
 
 
+def build_synthetic(rho_target, R_scale):
+    """
+    SYNTHETIC HJELLE variant for the rho/R separation grid (task C).
+
+    This DOES change physical parameters, deliberately and only here. The
+    instances live in their own directories, carry an explicit warning banner in
+    every generated file, and must be kept out of any conclusion about uTAHPS.
+
+    Two edits:
+      1. The reservoir curve is scaled, V'(masl) = R_scale * V(masl), with LRW
+         and HRW left at 748/757 masl. Head as a function of level is unchanged;
+         the volume per metre is not. This isolates R AT CONSTANT HEAD SPAN --
+         a narrower claim than isolating R, and not physically realisable.
+      2. The inflow series is scaled by k so the cell lands exactly on its target
+         rho. Without this, scaling the curve would drag rho along with R through
+         the initial storage term, which is the confound the grid exists to
+         remove. See params.synthetic_inflow_scale for the derivation.
+
+    Everything else -- turbine curve, HEADLOSSCOEF, POWSTAT_MASL, RES_PENALTY,
+    LOCAL_ENERGY_EQUIVALENT, the price file, the channel -- is HJELLE's.
+    """
+    import params as P
+
+    slug = P.synthetic_slug(rho_target, R_scale)
+    k = P.synthetic_inflow_scale(rho_target, R_scale)
+    if k <= 0:
+        raise ValueError(f"{slug}: inflow scale {k:.4f} <= 0, cell is infeasible")
+
+    d = os.path.join(OUT, slug)
+    os.makedirs(os.path.join(d, "output"), exist_ok=True)
+
+    banner = (f"##########################################################################\n"
+              f"# SYNTHETIC INSTANCE -- NOT a slice of uTAHPS. Do not mix with verbatim\n"
+              f"# results. Generated by build_instances.build_synthetic().\n"
+              f"#   target rho = {rho_target:g}   R scale = {R_scale:g}\n"
+              f"#   reservoir curve scaled by {R_scale:g} (LRW/HRW fixed at 748/757 masl,\n"
+              f"#   so head span is UNCHANGED -- this isolates R at constant head span)\n"
+              f"#   inflow series scaled by {k:.6f} to hold rho at its target\n"
+              f"##########################################################################\n")
+
+    curve = P.HJELLE_DAILY.reservoir_curve_Mm3 * R_scale
+    masl = P.HJELLE_DAILY.reservoir_curve_masl
+    curve_lines = "\n".join(f"{m:.2f}\t{v:.6f}" for m, v in zip(masl, curve))
+
+    topo = HJELLE_TOPOLOGY
+    old_block = "\n".join([
+        "RESERVOIR_CURVE 7", "747\t0.0", "748\t1.0", "749\t2.37", "750\t3.24",
+        "757\t10.0", "758\t15.0", "760\t100"])
+    if old_block not in topo:
+        raise RuntimeError("HJELLE reservoir curve block not found; template changed")
+    topo = topo.replace(old_block, f"RESERVOIR_CURVE 7\n{curve_lines}")
+    topo = topo.replace("NODE RESERVOIR 0 HJELLE", f"NODE RESERVOIR 0 {slug.upper()}")
+    with open(os.path.join(d, "topology.txt"), "w") as f:
+        f.write(banner + topo)
+
+    with open(os.path.join(d, "global.txt"), "w") as f:
+        f.write(banner.replace("#####", "#####") +
+                GLOBAL_TEMPLATE.format(name=slug, systemname=slug))
+
+    dates, cols = read_utahps_columns()
+    inflow = [q * k for q in cols["0"]]
+    T = len(inflow)
+    with open(os.path.join(d, "inflowseries.txt"), "w") as f:
+        f.write("Date_NodeID\t0\n")
+        for dt, q in zip(dates, inflow):
+            f.write(f"{dt}\t{q:.6f}\n")
+
+    with open(os.path.join(SRC, "pricefile_utahps.txt")) as fin:
+        price_text = fin.read()
+    with open(os.path.join(d, "pricefile.txt"), "w") as f:
+        f.write(price_text)
+
+    mean_q = sum(inflow) / T
+    k_res = 4 * 3600.0 / 3
+    s_Mm3 = k_res * mean_q / 1e6
+    with open(os.path.join(d, "start_state.txt"), "w") as f:
+        f.write(banner + START_STATE_TEMPLATE.format(
+            name=slug, res_name=slug.upper(), pst_name="SVOLETJONN",
+            chn_name="VANAROSEN", init_fr=P._HJELLE_INIT_FR, mean_q=mean_q,
+            k_res=k_res, n_linres=3,
+            storages=" ".join(f"{s_Mm3:.6f}" for _ in range(3)),
+            total=3 * s_Mm3))
+
+    with open(os.path.join(d, "actions.txt"), "w") as f:
+        f.write("Date_NodeID\t1_0\n")
+        for dt in dates:
+            f.write(f"{dt}\t0.5\n")
+
+    reg = P.regime_numbers(P.INSTANCES[slug])
+    print(f"{slug}: inflow x{k:.4f}, curve x{R_scale:g}  ->  "
+          f"rho={reg['rho']:.4f} (target {rho_target:g}), R={reg['R']:.4f}")
+    return d
+
+
 if __name__ == "__main__":
     build("hjelle_daily", "HJELLE_daily", "HJELLE", "SVOLETJONN", "VANAROSEN",
           HJELLE_TOPOLOGY, src_inflow_col="0", init_fr="0.7", k_hours=4, n_linres=3)
     build("gresse_daily", "GRESSE_daily", "GRESSE", "SVEIGSHYL_II", "DALSANA",
           GRESSE_TOPOLOGY, src_inflow_col="3", init_fr="0.8", k_hours=6, n_linres=3)
+    # Two more cascade nodes, added 2026-08-03 to put five points on the rho/R
+    # axis. Same caveat as GRESSE: a slice fed only by its own local inflow is
+    # scarcer than the node is inside the full uTAHPS cascade, so rho here is a
+    # LOWER bound.
+    build("toppsy_daily", "TOPPSY_daily", "TOPPSY", "SVEIGSHYL_I", "DALSANA",
+          TOPPSY_TOPOLOGY, src_inflow_col="5", init_fr="0.9", k_hours=6, n_linres=3)
+    build("kroknesvatn_daily", "KROKNESVATN_daily", "KROKNESVATN", "EASTER",
+          "HYNNEKLEIV", KROKNESVATN_TOPOLOGY, src_inflow_col="9", init_fr="0.66",
+          k_hours=4, n_linres=2)
     build_sensitivity_e163()
+
+    if "--synthetic" in sys.argv:
+        import params as P
+        print("\n--- SYNTHETIC rho/R grid (task C) ---")
+        for rho_t, r_s in P.SYNTHETIC_PRIORITY:
+            build_synthetic(rho_t, r_s)
