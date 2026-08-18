@@ -1,0 +1,27 @@
+# Project: 		Hydraulic Economic River System Simulator (HERSS)
+# Programmer: 	Bernt Viggo Matheussen, May 2026 
+#               Global configuration file for the Upper Tovdalen Artificial Hydro Power System (uTAHPS) 
+
+SYSTEMNAME uTAHPS
+
+# Input
+INPUTDIR ./
+ACTIONFILE actions_utahps.txt
+INFLOWFILE inflowseries_utahps.txt
+PRICEFILE pricefile_utahps.txt
+TOPOLOGYFILE topology_utahps.txt
+STARTSTATEFILE start_state_utahps.txt
+
+OUTSTATEFILE outstate_utahps.txt
+WRITE_NODEFILES 1
+OUTPUTDIR ./output/
+
+
+# Print global system information to screen or not.
+# Default is not to print
+PRINT_GLOBAL_INFO FALSE
+
+# Print economic info to screen or not. 
+# Default is not to print. 
+PRINT_ECONOMIC_INFO FALSE
+
