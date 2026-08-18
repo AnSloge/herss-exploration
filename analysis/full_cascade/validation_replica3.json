@@ -1,0 +1,102 @@
+{
+  "instance": "utahps_daily",
+  "T": 365,
+  "restprice": 101.0,
+  "herss_version": "3.1.03",
+  "herss_version_date": "20260611",
+  "print_resolution": 0.0005,
+  "rel_tol": 1e-06,
+  "sets": {
+    "shipped": {
+      "vf_calcvf": 26430725.220978282,
+      "vf_replica": 26430725.23034899,
+      "vf_abs_diff": -0.009370706975460052,
+      "vf_rel_diff": 3.545383979105668e-10,
+      "vf_cli_writeriversystemdata": 26430725.418,
+      "cli_minus_calcvf": 0.1970217190682888,
+      "negative_overflow_events": 0,
+      "waterbalance": 0.0,
+      "n_fields": 76,
+      "n_fail": 0,
+      "worst_ok_field": {
+        "idnr": 10,
+        "field": "power_MWh",
+        "n": 365,
+        "max_abs": 5.1643129097556084e-05,
+        "max_rel": 6.0737789619594465e-06,
+        "worst_margin": 0.10328625819511217,
+        "worst_t": 66,
+        "tolerance_at_worst": 0.0005,
+        "herss": 323.9602,
+        "replica": 323.9601483568709,
+        "status": "OK"
+      },
+      "failures": [],
+      "ok": true
+    },
+    "zero": {
+      "vf_calcvf": 8430520.5,
+      "vf_replica": 8430520.5,
+      "vf_abs_diff": 0.0,
+      "vf_rel_diff": 0.0,
+      "vf_cli_writeriversystemdata": 8430520.5,
+      "cli_minus_calcvf": 0.0,
+      "negative_overflow_events": 0,
+      "waterbalance": 0.0,
+      "n_fields": 76,
+      "n_fail": 0,
+      "worst_ok_field": {
+        "idnr": 5,
+        "field": "res_Mm3",
+        "n": 365,
+        "max_abs": 5.0046165483763616e-05,
+        "max_rel": 1.3016157066374942e-07,
+        "worst_margin": 0.10009233096752723,
+        "worst_t": 106,
+        "tolerance_at_worst": 0.0005,
+        "herss": 411.9819,
+        "replica": 411.9818499538345,
+        "status": "OK"
+      },
+      "failures": [],
+      "ok": true
+    },
+    "random": {
+      "vf_calcvf": 22741123.4374829,
+      "vf_replica": 22741123.435663305,
+      "vf_abs_diff": 0.0018195956945419312,
+      "vf_rel_diff": 8.001344786435638e-11,
+      "vf_cli_writeriversystemdata": 22741124.156,
+      "cli_minus_calcvf": 0.7185170985758305,
+      "negative_overflow_events": 0,
+      "waterbalance": -0.0,
+      "n_fields": 76,
+      "n_fail": 0,
+      "worst_ok_field": {
+        "idnr": 10,
+        "field": "power_MWh",
+        "n": 365,
+        "max_abs": 0.0003253410996535422,
+        "max_rel": 5.4342277480246004e-05,
+        "worst_margin": 0.6506821993070844,
+        "worst_t": 118,
+        "tolerance_at_worst": 0.0005,
+        "herss": 131.9349,
+        "replica": 131.93522534109965,
+        "status": "OK"
+      },
+      "failures": [],
+      "ok": true
+    }
+  },
+  "determinism": {
+    "A_first": 26430725.220978282,
+    "A_repeat": 26430725.220978282,
+    "B": 22741123.4374829,
+    "A_after_B": 26430725.220978282,
+    "repeat_bit_identical": true,
+    "aba_bit_identical": true,
+    "ok": true
+  },
+  "all_ok": true
+}
