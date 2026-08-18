@@ -27,3 +27,7 @@ data/*
 
 .venv
 
+# Python bytecode
+__pycache__/
+*.pyc
+
