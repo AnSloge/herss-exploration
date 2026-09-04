@@ -1,0 +1,13 @@
+q_pump_m3s,horisont,krav_mm3,hjelle_mulig,gresse_mulig
+1,6t,0.0216,True,True
+1,12t,0.0432,True,True
+1,24t,0.0864,True,True
+1,7d,0.6048,True,True
+2,6t,0.0432,True,True
+2,12t,0.0864,True,True
+2,24t,0.1728,True,True
+2,7d,1.2096,True,True
+5,6t,0.108,True,True
+5,12t,0.216,True,True
+5,24t,0.432,True,True
+5,7d,3.024,True,True

@@ -25,6 +25,7 @@ import dp
 import oracle
 import replica as R
 from params import INSTANCES, load_series, regime_numbers
+from params import n_grid_for as P_n_grid_for
 
 UPSTREAM_PINNED = "029a2d5"
 B4_SEEDS = (1, 2)
@@ -53,6 +54,19 @@ def main():
                     help="override LOCAL_ENERGY_EQUIVALENT (sensitivity run)")
     ap.add_argument("--n-grid", type=int, default=None)
     ap.add_argument("--skip-b4", action="store_true")
+    # ---- Phase C flags. All three default to the pre-Phase-C behaviour, so
+    # every earlier result reproduces from an unflagged command line.
+    ap.add_argument("--auto-grid", action="store_true",
+                    help="derive n_grid from params.n_grid_for (~155 grid cells per "
+                         "full-load step) instead of the fixed 8001/26001. Holds DP "
+                         "resolution constant in physical units as the reservoir is scaled.")
+    ap.add_argument("--skip-convergence", action="store_true",
+                    help="skip the doubled-grid convergence check. Phase C runs it on "
+                         "three representative cells only; the DP value then comes from "
+                         "the base grid alone and convergence fields are null.")
+    ap.add_argument("--out-suffix", default="",
+                    help="appended to the result filename. Used by the bridge cell so a "
+                         "re-measurement never overwrites the run it is compared against.")
     args = ap.parse_args()
 
     key = args.instance
@@ -67,7 +81,12 @@ def main():
     # Grid sizes chosen for EQUAL resolution relative to one step's maximum
     # discharge (~169 grid cells per full-discharge step on both instances),
     # not equal point counts: GRESSE's reachable storage span is ~5x HJELLE's.
-    n_grid = args.n_grid or (26001 if key == "gresse" else 8001)
+    if args.n_grid:
+        n_grid = args.n_grid
+    elif args.auto_grid:
+        n_grid = P_n_grid_for(p, prices, inflows, restprice)
+    else:
+        n_grid = 26001 if key == "gresse" else 8001
 
     print(f"=== {p.name} ===")
     print(f"HERSS {version}/{version_date}, upstream pinned {UPSTREAM_PINNED}, "
@@ -103,15 +122,22 @@ def main():
           f"(grid top {sol['state_grid'][1]:.3f})")
 
     # convergence: double the storage grid AND the action grids
-    t0 = time.time()
-    sol2 = dp.solve(p, prices, inflows, restprice, n_grid=2 * n_grid - 1,
-                    n_action_bwd=401, n_action_fwd=4001)
-    t_conv = time.time() - t0
-    dv = sol2["vf_replica"] - sol["vf_replica"]
-    print(f"    convergence check (grid x2, actions x2): VF = {sol2['vf_replica']:.4f}, "
-          f"delta = {dv:+.4f} EUR ({100*dv/sol['vf_replica']:+.6f} %)  [{t_conv:.1f}s]")
-    dp_actions = sol2["actions"] if sol2["vf_replica"] > sol["vf_replica"] else sol["actions"]
-    dp_vf_replica = max(sol2["vf_replica"], sol["vf_replica"])
+    if args.skip_convergence:
+        sol2, t_conv, dv = None, None, None
+        print("    convergence check SKIPPED (--skip-convergence); DP value is the "
+              "base grid alone")
+        dp_actions = sol["actions"]
+        dp_vf_replica = sol["vf_replica"]
+    else:
+        t0 = time.time()
+        sol2 = dp.solve(p, prices, inflows, restprice, n_grid=2 * n_grid - 1,
+                        n_action_bwd=401, n_action_fwd=4001)
+        t_conv = time.time() - t0
+        dv = sol2["vf_replica"] - sol["vf_replica"]
+        print(f"    convergence check (grid x2, actions x2): VF = {sol2['vf_replica']:.4f}, "
+              f"delta = {dv:+.4f} EUR ({100*dv/sol['vf_replica']:+.6f} %)  [{t_conv:.1f}s]")
+        dp_actions = sol2["actions"] if sol2["vf_replica"] > sol["vf_replica"] else sol["actions"]
+        dp_vf_replica = max(sol2["vf_replica"], sol["vf_replica"])
     dp_vf_real = real_vf(key, dp_actions)
     print(f"    DP on REAL HERSS = {dp_vf_real:.4f}  "
           f"(replica-real = {dp_vf_replica - dp_vf_real:+.5f})\n")
@@ -231,10 +257,20 @@ def main():
         "regime": reg,
         "dp": {"actions": [float(a) for a in dp_actions],
                "vf_replica": dp_vf_replica, "vf_real_herss": dp_vf_real,
-               "grid": sol["state_grid"], "grid_doubled": sol2["state_grid"],
-               "vf_base_grid": sol["vf_replica"], "vf_doubled_grid": sol2["vf_replica"],
+               "grid": sol["state_grid"],
+               "grid_doubled": sol2["state_grid"] if sol2 else None,
+               "vf_base_grid": sol["vf_replica"],
+               "vf_doubled_grid": sol2["vf_replica"] if sol2 else None,
                "convergence_delta_euro": dv,
-               "convergence_delta_pct": 100 * dv / sol["vf_replica"],
+               "convergence_delta_pct": (100 * dv / sol["vf_replica"]) if dv is not None else None,
+               "convergence_checked": sol2 is not None,
+               "auto_grid": bool(args.auto_grid),
+               # grid cells per full-load step -- the resolution number that must
+               # travel with every gap, since the 2026-08-04 run held the point
+               # count fixed instead of the resolution
+               "cells_per_fullload_step": (
+                   p.m3s_to_Mm3(p.generator_max_discharge)
+                   / ((sol["state_grid"][1] - sol["state_grid"][0]) / (n_grid - 1))),
                "n_transition_evaluations": sol["n_transition_evaluations"],
                "seconds": t_dp, "seconds_convergence": t_conv},
         "baselines": results,
@@ -246,7 +282,7 @@ def main():
         "gap_decomposition": decomposition,
     }
     suffix = "" if args.energy_equivalent is None else f"_e{args.energy_equivalent}"
-    fn = f"result_{key}{suffix}.json"
+    fn = f"result_{key}{suffix}{args.out_suffix}.json"
     with open(fn, "w") as f:
         json.dump(out, f, indent=2, default=float)
     print(f"\nWritten to {fn}")

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="700" viewBox="0 0 1100 700" role="img" aria-label="Sesong- og døgnmønster: uTAHPS NO2">
+<rect width="100%" height="100%" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#111} .small{font-size:12px} .axis{stroke:#333;stroke-width:1} .grid{stroke:#d9d9d9;stroke-width:1}</style>
+<text x="550" y="28" text-anchor="middle" font-size="18" font-weight="bold">Sesong- og døgnmønster: uTAHPS NO2</text>
+<text x="80" y="58" font-size="15" font-weight="bold">Gjennomsnittlig døgnpris per måned</text>
+<line class="axis" x1="80" y1="310" x2="1020" y2="310"/>
+<line class="axis" x1="80" y1="70" x2="80" y2="310"/>
+<text class="small" x="80.00" y="330" text-anchor="middle">1</text>
+<text class="small" x="165.45" y="330" text-anchor="middle">2</text>
+<text class="small" x="250.91" y="330" text-anchor="middle">3</text>
+<text class="small" x="336.36" y="330" text-anchor="middle">4</text>
+<text class="small" x="421.82" y="330" text-anchor="middle">5</text>
+<text class="small" x="507.27" y="330" text-anchor="middle">6</text>
+<text class="small" x="592.73" y="330" text-anchor="middle">7</text>
+<text class="small" x="678.18" y="330" text-anchor="middle">8</text>
+<text class="small" x="763.64" y="330" text-anchor="middle">9</text>
+<text class="small" x="849.09" y="330" text-anchor="middle">10</text>
+<text class="small" x="934.55" y="330" text-anchor="middle">11</text>
+<text class="small" x="1020.00" y="330" text-anchor="middle">12</text>
+<line class="grid" x1="80" y1="310.00" x2="1020" y2="310.00"/>
+<text class="small" x="72" y="314.00" text-anchor="end">34</text>
+<line class="grid" x1="80" y1="190.00" x2="1020" y2="190.00"/>
+<text class="small" x="72" y="194.00" text-anchor="end">214</text>
+<line class="grid" x1="80" y1="70.00" x2="1020" y2="70.00"/>
+<text class="small" x="72" y="74.00" text-anchor="end">393</text>
+<polyline points="80.00,248.28 165.45,256.07 250.91,257.63 336.36,258.73 421.82,279.00 507.27,268.40 592.73,286.77 678.18,284.12 763.64,93.23 849.09,244.46 934.55,257.51 1020.00,153.12" fill="none" stroke="#54a24b" stroke-width="2.5"/>
+<text class="small" x="550" y="352" text-anchor="middle">Måned</text>
+<text x="80" y="398" font-size="15" font-weight="bold">Gjennomsnittlig timespris per klokkeslett</text>
+<line class="axis" x1="80" y1="620" x2="1020" y2="620"/>
+<line class="axis" x1="80" y1="410" x2="80" y2="620"/>
+<text class="small" x="80.00" y="640" text-anchor="middle">0</text>
+<text class="small" x="161.74" y="640" text-anchor="middle">2</text>
+<text class="small" x="243.48" y="640" text-anchor="middle">4</text>
+<text class="small" x="325.22" y="640" text-anchor="middle">6</text>
+<text class="small" x="406.96" y="640" text-anchor="middle">8</text>
+<text class="small" x="488.70" y="640" text-anchor="middle">10</text>
+<text class="small" x="570.43" y="640" text-anchor="middle">12</text>
+<text class="small" x="652.17" y="640" text-anchor="middle">14</text>
+<text class="small" x="733.91" y="640" text-anchor="middle">16</text>
+<text class="small" x="815.65" y="640" text-anchor="middle">18</text>
+<text class="small" x="897.39" y="640" text-anchor="middle">20</text>
+<text class="small" x="979.13" y="640" text-anchor="middle">22</text>
+<line class="grid" x1="80" y1="620.00" x2="1020" y2="620.00"/>
+<text class="small" x="72" y="624.00" text-anchor="end">107</text>
+<line class="grid" x1="80" y1="515.00" x2="1020" y2="515.00"/>
+<text class="small" x="72" y="519.00" text-anchor="end">139</text>
+<line class="grid" x1="80" y1="410.00" x2="1020" y2="410.00"/>
+<text class="small" x="72" y="414.00" text-anchor="end">171</text>
+<polyline points="80.00,565.55 120.87,582.40 161.74,594.90 202.61,599.68 243.48,581.67 284.35,548.79 325.22,503.60 366.09,467.83 406.96,464.41 447.83,478.66 488.70,503.38 529.57,526.83 570.43,546.10 611.30,556.53 652.17,542.04 693.04,516.91 733.91,477.32 774.78,440.05 815.65,430.32 856.52,445.09 897.39,473.80 938.26,502.14 979.13,530.14 1020.00,553.18" fill="none" stroke="#54a24b" stroke-width="2.5"/>
+<text class="small" x="550" y="662" text-anchor="middle">Klokkeslett</text>
+<text class="small" x="1020" y="690" text-anchor="end">Pris [EUR/MWh]</text>
+</svg>

@@ -1,0 +1,31 @@
+Riversystem syn_rho0p782_R1p25
+Node Idnr Nodename          Nodetype int Nodetypename Remaining_Mm3
+Node  0 SYN_RHO0P782_R1P25   Nodetype 0  RESERVOIR             6.7661 
+Node  1 SVOLETJONN           Nodetype 1  PSTATION              0.0000 
+Node  2 VANAROSEN            Nodetype 2  CHANNEL               0.0288 
+-------------------------------------------
+GLOBAL WATERBALANCE
+start_water_Mm3   = 9.166448
+inflow_volume_Mm3 = 90.769607
+outflow_Mm3       = 93.141203
+end_water_Mm3     = 6.794853
+waterbalance      = 0.000000
+Note that there might be dead water below LRW in the system
+-------------------------------------------
+Average_price_Euro           = 137.878
+RestPrice_Euro               = 101.000
+tot_remaining_Mm3            = 6.795
+tot_active_remaining_Mm3     = 5.516
+tot_remaining_MWh            = 606.766
+tot_remaining_Euro           = 61283.345
+Sum_Production_MWh           = 8988.572
+tot_income_Euro              = 1236908.490
+Avg_achieved_price_E_MWh     = 137.609
+sum_qmin_cost_Euro           = 0.000
+sum_lrw_cost_Euro            = 0.000
+sum_startstopcost_Euro       = 1.000
+sum_max_adjustment_cost      = 0.000
+sum_aggressive_actions_cost  = 0.000
+tot_cost_Euro                = 1.000
+tot_profit_Euro              = 1236907.490
+valuefunction_Euro           = 1298190.835

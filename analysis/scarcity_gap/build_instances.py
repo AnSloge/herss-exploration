@@ -652,6 +652,17 @@ def build_synthetic(rho_target, R_scale):
 
 
 if __name__ == "__main__":
+    # --fase-c builds only the Phase C extension cells. The four uTAHPS slices
+    # and e163 are left alone: rebuilding them would be byte-identical, but the
+    # point of the flag is that a Phase C run touches nothing the earlier
+    # measurements were made against.
+    if "--fase-c" in sys.argv and "--synthetic" not in sys.argv:
+        import params as P
+        print("--- SYNTHETIC rho/R grid, Phase C extension ---")
+        for rho_t, r_s, _converge in P.FASE_C_CELLS:
+            build_synthetic(rho_t, r_s)
+        raise SystemExit(0)
+
     build("hjelle_daily", "HJELLE_daily", "HJELLE", "SVOLETJONN", "VANAROSEN",
           HJELLE_TOPOLOGY, src_inflow_col="0", init_fr="0.7", k_hours=4, n_linres=3)
     build("gresse_daily", "GRESSE_daily", "GRESSE", "SVEIGSHYL_II", "DALSANA",
@@ -669,6 +680,17 @@ if __name__ == "__main__":
 
     if "--synthetic" in sys.argv:
         import params as P
-        print("\n--- SYNTHETIC rho/R grid (task C) ---")
+        print("\n--- SYNTHETIC rho/R grid (2026-08-04) ---")
         for rho_t, r_s in P.SYNTHETIC_PRIORITY:
+            build_synthetic(rho_t, r_s)
+
+    if "--fase-c" in sys.argv:
+        # Phase C extension cells only. build_synthetic() is used UNCHANGED:
+        # same V'(m) = R_scale * V(m) convention over the whole curve and the
+        # same inflow rescaling, so the new cells land on the same gap-vs-R
+        # curve as the nine measured on 2026-08-04. The bridge cell is not
+        # built here -- it re-measures syn_rho1_R4 exactly as it sits on disk.
+        import params as P
+        print("\n--- SYNTHETIC rho/R grid, Phase C extension ---")
+        for rho_t, r_s, _converge in P.FASE_C_CELLS:
             build_synthetic(rho_t, r_s)

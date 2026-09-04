@@ -318,17 +318,109 @@ def make_synthetic_hjelle(rho_target, R_scale):
     )
 
 
-SYNTHETIC_RHO = (0.5, 0.75, 1.0, 1.25)
-SYNTHETIC_R_SCALE = (0.5, 1.0, 2.0, 4.0)
+# The 2026-08-04 grid. Nine of these sixteen cells were measured; the axis
+# values are frozen here so `build_instances.py --synthetic` keeps building
+# exactly the same instances it built then. Phase C extends the axes below
+# without touching these.
+SYNTHETIC_RHO_2026_08_04 = (0.5, 0.75, 1.0, 1.25)
+SYNTHETIC_R_SCALE_2026_08_04 = (0.5, 1.0, 2.0, 4.0)
 
 # Priority order for a limited night: the R_scale = 1 row and the rho = 1 column
 # first (they cross at one cell), then the diagonal.
 SYNTHETIC_PRIORITY = (
-    [(r, 1.0) for r in SYNTHETIC_RHO]
-    + [(1.0, s) for s in SYNTHETIC_R_SCALE if s != 1.0]
-    + [(r, s) for r, s in zip(SYNTHETIC_RHO, SYNTHETIC_R_SCALE)
+    [(r, 1.0) for r in SYNTHETIC_RHO_2026_08_04]
+    + [(1.0, s) for s in SYNTHETIC_R_SCALE_2026_08_04 if s != 1.0]
+    + [(r, s) for r, s in zip(SYNTHETIC_RHO_2026_08_04, SYNTHETIC_R_SCALE_2026_08_04)
        if s != 1.0 and r != 1.0]
 )
+
+# ------------------------------------------------------- Phase C extension
+#
+# Phase C (2026-08-18) extends the same two axes. It uses the SAME construction
+# as the 2026-08-04 cells -- V'(m) = R_scale * V(m) over the whole curve with
+# LRW/HRW fixed at 748/757, and the inflow rescaled by synthetic_inflow_scale so
+# rho lands exactly on its target independently of R_scale. This was verified by
+# reading the built instances back off disk before Phase C was designed: the
+# curve ratio is constant across all seven points in all nine cells, no cell has
+# a negative volume, and the recomputed rho hits 0.5000/0.7500/1.0000/1.2500.
+# Keeping the convention is what lets old and new cells share one gap-vs-R curve.
+#
+# prompt-phase-c.md proposes a different R axis, V'(m) = V(LRW) + s*(V(m)-V(LRW)),
+# which holds dead storage fixed. That is arguably the more physical reading of
+# "deeper reservoir", but it is NOT used here, for two reasons: it would fork the
+# dataset away from the nine validated cells, and as written it produces negative
+# volumes below LRW (at 747 masl, 1 + 8*(0-1) = -7 Mm3). Recorded as a method
+# note in analysis/gap_fase_c.md, not as a fork.
+SYNTHETIC_RHO_FASE_C = (0.782, 1.221, 1.733, 1.75)
+SYNTHETIC_R_SCALE_FASE_C = (1.25, 1.5, 8.0)
+
+SYNTHETIC_RHO = tuple(sorted(set(SYNTHETIC_RHO_2026_08_04 + SYNTHETIC_RHO_FASE_C)))
+SYNTHETIC_R_SCALE = tuple(sorted(set(SYNTHETIC_R_SCALE_2026_08_04 + SYNTHETIC_R_SCALE_FASE_C)))
+
+# The bridge cell. Not a new instance: syn_rho1_R4 exactly as it already sits on
+# disk, re-measured on the DERIVED state grid instead of the fixed 8001 points
+# the 2026-08-04 run used. That run held n_grid fixed, so its resolution fell
+# from 389 to 41 cells per full-load step as R grew. R means the same thing in
+# both grids, but DP quality does not, and this cell is what measures the
+# difference. Old and new cells go in one gap-vs-R table only if it comes back
+# small relative to the gaps being compared.
+FASE_C_BRIDGE = ("syn_rho1_R4", "_fasec")
+
+# (rho_target, R_scale, run_convergence_check). Order is the run order: a
+# partial night must still be worth reading, so the cells that answer the
+# sharpest question come first.
+FASE_C_CELLS = (
+    # 1-2  crossing bracket. The measured cells at rho=1 put the 1% crossing
+    #      between R=0.0713 (1.795%) and R=0.1427 (0.161%); s_R = 2 there is
+    #      already measured, so the two new points go at 1.25 and 1.5. Both sit
+    #      on the R edge at fixed rho, not on the diagonal.
+    (1.0, 1.25, False),
+    (1.0, 1.5, True),
+    # 3    extends the rho=1 R edge to R=0.5708, the range TOPPSY (0.68) and
+    #      KROKNESVATN (0.64) actually occupy.
+    (1.0, 8.0, True),
+    # 4-6  the same R edge anchored at HJELLE's own rho, which is what
+    #      prompt-phase-c.md asks for. Tests whether the R effect is rho-invariant.
+    (0.782, 2.0, False),
+    (0.782, 4.0, True),
+    (0.782, 8.0, False),
+    # 7    rho edge at low R: does the gap keep falling as water gets abundant?
+    (1.75, 1.0, False),
+    # 8-9  diagonal, rho and R rising together as they do in the real instances.
+    (1.221, 4.0, False),
+    (1.733, 8.0, False),
+    # 10   crossing at HJELLE's own rho.
+    (0.782, 1.25, False),
+)
+
+
+def n_grid_for(p, prices, inflows, restprice, cells_per_fullload_step=155,
+               n_min=2001, n_max=120001):
+    """
+    State-grid size that holds resolution constant in PHYSICAL units instead of
+    holding the point count constant.
+
+    The 2026-08-04 run used n_grid = 8001 for every cell, so a cell with four
+    times the storage got a four times coarser grid -- and those were exactly
+    the cells reporting a near-zero gap. Here the target is a fixed number of
+    grid cells per full-load step (one step at GENERATOR_MAX_DISCHARGE), so a
+    deeper reservoir buys more points rather than a coarser discretisation.
+
+    Bounds come from dp.make_state_grid, which is already derived rather than
+    guessed: LRW filling at the bottom, max volume under the all-off policy
+    times 1.15 at the top. Imported lazily -- dp imports replica imports params.
+
+    Returned odd, so the convergence check's 2n-1 doubling lands on a grid that
+    contains this one.
+    """
+    import dp
+
+    grid, _ = dp.make_state_grid(p, prices, inflows, restprice, 2)
+    span = float(grid[-1] - grid[0])
+    cell_target = p.m3s_to_Mm3(p.generator_max_discharge) / cells_per_fullload_step
+    n = int(round(span / cell_target)) + 1
+    n = max(n_min, min(n_max, n))
+    return n if n % 2 == 1 else n + 1
 
 INSTANCES = {
     "mini": MINI_UTAHPS_DAILY,

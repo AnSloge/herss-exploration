@@ -1,0 +1,10 @@
+syn_rho1_R1p25 0 1.25
+syn_rho1_R1p5 1 1.5
+syn_rho1_R8 1 8.0
+syn_rho0p782_R2 0 2.0
+syn_rho0p782_R4 1 4.0
+syn_rho0p782_R8 0 8.0
+syn_rho1p75_R1 0 1.0
+syn_rho1p221_R4 0 4.0
+syn_rho1p733_R8 0 8.0
+syn_rho0p782_R1p25 0 1.25

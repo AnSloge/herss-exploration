@@ -123,7 +123,18 @@ def check_forward_batch(p, prices, inflows, restprice, seed=7):
 
 
 def main():
-    keys = sys.argv[1:] or ["hjelle", "gresse"]
+    # --out lets one instance be validated per process without clobbering the
+    # shared report. Each sequence costs a fresh subprocess that re-JITs
+    # herss.h through cppyy, so validating ten instances serially takes hours;
+    # they are independent and parallelise cleanly.
+    argv = list(sys.argv[1:])
+    out = "validation_replica.json"
+    if "--out" in argv:
+        i = argv.index("--out")
+        out = argv[i + 1]
+        del argv[i:i + 2]
+
+    keys = argv or ["hjelle", "gresse"]
     version, version_date = oracle.version_info()
     print(f"HERSS VERSION {version} / VERSION_DATE {version_date}\n")
 
@@ -148,7 +159,7 @@ def main():
         report[key] = {"forward_batch_max_diff": float(wb), "sequences": rows}
         print()
 
-    with open("validation_replica.json", "w") as f:
+    with open(out, "w") as f:
         json.dump(report, f, indent=2)
     print("ALL PASS" if all_ok else "SOME FAILED")
     return 0 if all_ok else 1

@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="650" viewBox="0 0 1100 650" role="img" aria-label="Prisfordeling: uTAHPS NO2, 2022-09-01 til 2023-08-31">
+<rect width="100%" height="100%" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#111} .small{font-size:12px} .axis{stroke:#333;stroke-width:1} .grid{stroke:#d9d9d9;stroke-width:1}</style>
+<text x="550" y="28" text-anchor="middle" font-size="18" font-weight="bold">Prisfordeling: uTAHPS NO2, 2022-09-01 til 2023-08-31</text>
+<line class="axis" x1="85" y1="570" x2="1065" y2="570"/>
+<line class="axis" x1="85" y1="70" x2="85" y2="570"/>
+<rect x="85.00" y="454.12" width="48.00" height="115.88" fill="#4c78a8" opacity="0.78"/>
+<rect x="134.00" y="447.80" width="48.00" height="122.20" fill="#4c78a8" opacity="0.78"/>
+<rect x="183.00" y="70.00" width="48.00" height="500.00" fill="#4c78a8" opacity="0.78"/>
+<rect x="232.00" y="142.56" width="48.00" height="427.44" fill="#4c78a8" opacity="0.78"/>
+<rect x="281.00" y="453.03" width="48.00" height="116.97" fill="#4c78a8" opacity="0.78"/>
+<rect x="330.00" y="512.96" width="48.00" height="57.04" fill="#4c78a8" opacity="0.78"/>
+<rect x="379.00" y="530.65" width="48.00" height="39.35" fill="#4c78a8" opacity="0.78"/>
+<rect x="428.00" y="540.76" width="48.00" height="29.24" fill="#4c78a8" opacity="0.78"/>
+<rect x="477.00" y="535.52" width="48.00" height="34.48" fill="#4c78a8" opacity="0.78"/>
+<rect x="526.00" y="541.12" width="48.00" height="28.88" fill="#4c78a8" opacity="0.78"/>
+<rect x="575.00" y="540.94" width="48.00" height="29.06" fill="#4c78a8" opacity="0.78"/>
+<rect x="624.00" y="544.37" width="48.00" height="25.63" fill="#4c78a8" opacity="0.78"/>
+<rect x="673.00" y="554.48" width="48.00" height="15.52" fill="#4c78a8" opacity="0.78"/>
+<rect x="722.00" y="551.95" width="48.00" height="18.05" fill="#4c78a8" opacity="0.78"/>
+<rect x="771.00" y="559.35" width="48.00" height="10.65" fill="#4c78a8" opacity="0.78"/>
+<rect x="820.00" y="565.13" width="48.00" height="4.87" fill="#4c78a8" opacity="0.78"/>
+<rect x="869.00" y="566.21" width="48.00" height="3.79" fill="#4c78a8" opacity="0.78"/>
+<rect x="918.00" y="568.92" width="48.00" height="1.08" fill="#4c78a8" opacity="0.78"/>
+<rect x="967.00" y="569.28" width="48.00" height="0.72" fill="#4c78a8" opacity="0.78"/>
+<rect x="1016.00" y="569.64" width="48.00" height="0.36" fill="#4c78a8" opacity="0.78"/>
+<rect x="109.50" y="567.29" width="23.50" height="2.71" fill="#f58518" opacity="0.9"/>
+<rect x="158.50" y="562.06" width="23.50" height="7.94" fill="#f58518" opacity="0.9"/>
+<rect x="207.50" y="549.42" width="23.50" height="20.58" fill="#f58518" opacity="0.9"/>
+<rect x="256.50" y="552.67" width="23.50" height="17.33" fill="#f58518" opacity="0.9"/>
+<rect x="305.50" y="564.58" width="23.50" height="5.42" fill="#f58518" opacity="0.9"/>
+<rect x="354.50" y="567.65" width="23.50" height="2.35" fill="#f58518" opacity="0.9"/>
+<rect x="403.50" y="569.10" width="23.50" height="0.90" fill="#f58518" opacity="0.9"/>
+<rect x="452.50" y="568.92" width="23.50" height="1.08" fill="#f58518" opacity="0.9"/>
+<rect x="501.50" y="568.92" width="23.50" height="1.08" fill="#f58518" opacity="0.9"/>
+<rect x="550.50" y="568.56" width="23.50" height="1.44" fill="#f58518" opacity="0.9"/>
+<rect x="599.50" y="568.19" width="23.50" height="1.81" fill="#f58518" opacity="0.9"/>
+<rect x="648.50" y="568.19" width="23.50" height="1.81" fill="#f58518" opacity="0.9"/>
+<rect x="697.50" y="568.92" width="23.50" height="1.08" fill="#f58518" opacity="0.9"/>
+<rect x="746.50" y="569.82" width="23.50" height="0.18" fill="#f58518" opacity="0.9"/>
+<rect x="795.50" y="570.00" width="23.50" height="0.00" fill="#f58518" opacity="0.9"/>
+<rect x="844.50" y="570.00" width="23.50" height="0.00" fill="#f58518" opacity="0.9"/>
+<rect x="893.50" y="569.82" width="23.50" height="0.18" fill="#f58518" opacity="0.9"/>
+<rect x="942.50" y="570.00" width="23.50" height="0.00" fill="#f58518" opacity="0.9"/>
+<rect x="991.50" y="570.00" width="23.50" height="0.00" fill="#f58518" opacity="0.9"/>
+<rect x="1040.50" y="570.00" width="23.50" height="0.00" fill="#f58518" opacity="0.9"/>
+<line class="grid" x1="85.00" y1="70" x2="85.00" y2="570"/>
+<text class="small" x="85.00" y="592" text-anchor="middle">0</text>
+<line class="grid" x1="330.00" y1="70" x2="330.00" y2="570"/>
+<text class="small" x="330.00" y="592" text-anchor="middle">176</text>
+<line class="grid" x1="575.00" y1="70" x2="575.00" y2="570"/>
+<text class="small" x="575.00" y="592" text-anchor="middle">351</text>
+<line class="grid" x1="820.00" y1="70" x2="820.00" y2="570"/>
+<text class="small" x="820.00" y="592" text-anchor="middle">527</text>
+<line class="grid" x1="1065.00" y1="70" x2="1065.00" y2="570"/>
+<text class="small" x="1065.00" y="592" text-anchor="middle">703</text>
+<line class="grid" x1="85" y1="570.00" x2="1065" y2="570.00"/>
+<text class="small" x="77" y="574.00" text-anchor="end">0</text>
+<line class="grid" x1="85" y1="320.00" x2="1065" y2="320.00"/>
+<text class="small" x="77" y="324.00" text-anchor="end">1385</text>
+<line class="grid" x1="85" y1="70.00" x2="1065" y2="70.00"/>
+<text class="small" x="77" y="74.00" text-anchor="end">2770</text>
+<text x="550" y="625" text-anchor="middle">Pris [EUR/MWh], 20 like brede bøtter</text>
+<text transform="translate(20 320) rotate(-90)" text-anchor="middle">Antall observasjoner</text>
+<rect x="845" y="45" width="14" height="14" fill="#4c78a8"/><text class="small" x="865" y="57">Time (n=8760)</text>
+<rect x="845" y="64" width="14" height="14" fill="#f58518"/><text class="small" x="865" y="76">Døgn (n=365)</text>
+</svg>

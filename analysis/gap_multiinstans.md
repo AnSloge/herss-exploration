@@ -336,7 +336,27 @@ størrelsesordener under de målte gapene. DP-politikken reproduseres i ekte HER
 
 ## 7. Syntetisk `rho`/`R`-rutenett
 
-*(fylles inn)*
+Kjørt, og rapportert separat i **[`analysis/gap_fase_c.md`](gap_fase_c.md)** (Fase C, 2026-08-19).
+
+De ni cellene som ble bygget natten til 2026-08-04 landet 00:38–02:03, altså **etter** at dette
+dokumentet ble skrevet 05:41 — derfor sto kapittelet tomt. De er nå analysert der, sammen med ti
+nye celler som utvider aksene til `R` = 0,571 og `rho` = 1,75.
+
+Kortversjonen, som endrer forbeholdet i §5.5 punkt 5:
+
+- **Gapet krever både lav `R` og `rho` ≈ 1.** Verken `R` alene eller `rho` alene forklarer det.
+  Langs `rho`-kanten ved `R` = 0,0713 topper gapet seg ved `rho` ≈ 1 (1,795 %) og kollapser til
+  0,055 % ved `rho` = 1,75.
+- **1 %-krysningen** ligger ved `R` ≈ 0,096 for `rho` = 1,00 og `R` ≈ 0,074 for `rho` = 0,782.
+- **«Overløp bryter B4» er motbevist i den formen.** Langs `rho`-kanten stiger overløpet monotont
+  til 95,77 Mm³ mens gapet faller. Det som ser ut til å telle er om overløpet er *unngåelig ved
+  planlegging*, ikke hvor mye det er.
+- **HJELLE er verken et avvik eller en topp**, men ligger på skulderen av hjørnet — noe som
+  forklarer både at den ga et gap og at gapet var beskjedent mot de 3,46 % rutenettet kan gi.
+
+Merk også at `toppsy_daily` og `kroknesvatn_daily` i §5.4 ble målt med bare 25 rutenettceller per
+fullaststeg. Deres nær-null gap bærer et oppløsningsforbehold som er dokumentert i
+`gap_fase_c.md` §10.
 
 ---
 
