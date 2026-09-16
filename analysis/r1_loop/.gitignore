@@ -1,0 +1,5 @@
+# Every instance here is GENERATED - build_loop.py writes the swept topologies,
+# and part4_shipped.py derives inst_shipped / inst_shipped_P60 from the pump
+# audit's fixture copy. The scripts are the artefact; the instances and their
+# HERSS output are regenerable (see R1_LOOP_REPORT.md, "Reproducing").
+inst_*/
