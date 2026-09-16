@@ -1,0 +1,106 @@
+##########################################################################
+# TOPOLOGY - inst_min (pump audit, analysis only; nothing under src/ or data/)
+#
+# Purpose-built so every number is hand-checkable:
+#   - both reservoir curves are exactly linear, 1.0 Mm3 per metre
+#   - pump efficiency curve is flat at 80 %, motor efficiency 1.0
+#   - HEADLOSSCOEF = 0 on the pump (head loss isolated in a separate variant)
+#   - PUMP_STARTSTOP = 0 so energy cost is not mixed with commitment cost
+#   - POWSTAT_MASL = 55.0 = reservoir_B's starting level, so the turbine's
+#     fixed tailwater datum coincides with the pump's source level at t=0
+#
+# pump_AB(0) lifts reservoir_B(3) -> reservoir_A(1)
+# reservoir_A(1) -tunnel-> pstation_A(2) -> reservoir_B(3) -hatch-> elv(4) -> sea
+##########################################################################
+
+NODE PUMP 0 pump_AB
+PUMP_SOURCE_IDNR 3
+PUMP_TARGET_IDNR 1
+PUMP_INLET_MASL 50.0
+MAX_DISCHARGE 2.0
+HEADLOSSCOEF 0.0
+STATIC_MOTOR_EFFICIENCY 1.0
+PUMP_STARTSTOP 0.0
+UNIFORM_NORMALIZED_CURVE 11
+0.0	80
+0.1	80
+0.2	80
+0.3	80
+0.4	80
+0.5	80
+0.6	80
+0.7	80
+0.8	80
+0.9	80
+1.0	80
+ENDNODE
+
+NODE RESERVOIR 1 reservoir_A
+HRW 110.0
+LRW 100.0
+RES_PENALTY 300
+FLOODLEVEL_PENALTY 300
+RESERVOIR_CURVE 4
+99	9.0
+100	10.0
+110	20.0
+111	21.0
+OVERFLOW_CURVE 3 4
+110	0.0
+111	10.0
+112	60.0
+FAST_OVERFLOW FALSE
+OUTLET_HATCH -9999
+OUTLET_TUNNEL 2
+OUTLET_AUTO_QMIN -9999
+ENDNODE
+
+NODE PSTATION 2 pstation_A
+DOWNLINK_IDNR 3
+NR_GENERATORS 1
+GENERATOR 0
+# NOTE: HERSS refuses a perfectly flat TURBINE_CURVE (ArrayCurve::initializeArrays
+# hard-errors on ydiff < 1e-4), so the turbine curve has to have real slope.
+# The PUMP's UNIFORM_NORMALIZED_CURVE path does NOT go through ArrayCurve and
+# accepts a flat curve without complaint - see the report.
+TURBINE_CURVE 3
+0.0	0.1
+1.0	40.0
+2.0	80.0
+GENERATOR_MAX_DISCHARGE 2.0
+STATIC_GENERATOR_EFFICIENCY	1.0
+HEADLOSSCOEF	0.0
+SHARED_PENSTOCK	TRUE
+POWSTAT_MASL 55.0
+POWSTAT_MIN_DISCHARGE	0.0
+POWSTAT_STARTSTOP	0.0
+LOCAL_ENERGY_EQUIVALENT	0.1090
+AUTO_QMIN -9999
+MAX_ADJUST -9999
+ENDNODE
+
+NODE RESERVOIR 3 reservoir_B
+HRW 60.0
+LRW 50.0
+RES_PENALTY 300
+FLOODLEVEL_PENALTY 300
+RESERVOIR_CURVE 4
+49	9.0
+50	10.0
+60	20.0
+61	21.0
+OVERFLOW_CURVE 3 4
+60	0.0
+61	10.0
+62	60.0
+FAST_OVERFLOW FALSE
+OUTLET_HATCH 4 0.0 2.0 50.0
+OUTLET_TUNNEL -9999
+OUTLET_AUTO_QMIN -9999
+ENDNODE
+
+NODE CHANNEL 4 elv -9
+N_CASCADE_LINRES 3
+K_TRAVELTIME_HOURS 1
+QMIN -9999
+ENDNODE

@@ -1,0 +1,5 @@
+# Simulation byproducts: every run of an instance rewrites these, which would
+# dirty the working tree on each re-run (the same trap CLAUDE.md section 5
+# describes for data/*/output/). The instance INPUT files are tracked, so the
+# outputs are fully regenerable - see PUMP_AUDIT_REPORT.md section 8.
+inst_*/output/

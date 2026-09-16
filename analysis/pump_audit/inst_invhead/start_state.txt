@@ -1,0 +1,5 @@
+NODE PUMP 0 pump_AB 0.0
+NODE RESERVOIR 1 reservoir_A 0.5
+NODE PSTATION 2 pstation_A 0.0
+NODE RESERVOIR 3 reservoir_B 0.5
+NODE CHANNEL 4 elv 0.0 0.0 0.0
