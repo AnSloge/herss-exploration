@@ -6,6 +6,11 @@
 **Predecessor:** `analysis/pump_audit/PUMP_AUDIT_REPORT.md`, risk **R1**
 **Working tree:** nothing under `src/` or `data/` modified. All artefacts under `analysis/r1_loop/`.
 
+**Addendum, 2026-09-19** (commit `6b0fbf9c76ab769e25d414f72c947d1dc7fca7f0`): **Part 5** applies
+the rule derived here to `data/fabelvassdraget`, the first dataset built by someone other than
+this investigation. Both of its pump loops violate the rule and one creates energy. Parts 1-3
+are unchanged.
+
 ---
 
 ## Verdict
@@ -44,6 +49,12 @@ Three findings, in order of importance:
    `-6.4e-04`). Its price is a systematic **understatement** of recovered energy, bounded
    exactly by `R_L / (D + R_L)`: **2.9 % for a high-head PSH**, 10 % medium-head, 66 % for two
    mountain lakes at similar elevation.
+
+4. **The rule is not followed in practice.** `data/fabelvassdraget`, a 19-node dataset built
+   independently of this investigation, contains two closed loops. **Both violate the rule**,
+   and the HEISVERKET loop reaches a **measured `eta_rt = 1.0256`** — 2.56 % more energy out
+   than in — with a clean log and every diagnostic passing (Part 5). The rule is therefore
+   necessary *and* not self-enforcing: nothing in HERSS nudges an author toward it.
 
 A one-parameter edit to the fixture HERSS ships — moving `POWSTAT_MASL` from 70.0 to
 `LRW(reservoir_B) = 60.0` — makes it return **`eta_rt = 1.2336`**, i.e. 23 % more energy out
@@ -331,6 +342,120 @@ reservoir's surface as its tailwater — a change in `src/powerstation.cpp`, out
 
 ---
 
+## Part 5 — The rule against a dataset built by someone else: `fabelvassdraget`
+
+*(Script numbering note: `part4_shipped.py` produces §2.3 and §3.4; there is no separate
+"Part 4" section. This part is produced by `part5_fabelvassdraget.py`.)*
+
+Parts 1-3 derived the rule on instances built for the purpose. The obvious objection is that
+purpose-built instances prove nothing about instances people actually write. `data/fabelvassdraget`
+answers that: a 19-node system authored by the HERSS pump developer as a stress test for the
+`PUMP` node, with no connection to this investigation.
+
+Everything below runs on `inst_fabel/`, a verbatim copy, so nothing under `data/` is touched.
+
+### 5.1 Enumerating the loops
+
+A closed loop in the R1 sense is a pump `L -> U` plus a station whose **intake** reservoir is
+`U` (i.e. `U` declares `OUTLET_TUNNEL <station>`) and whose `DOWNLINK_IDNR` is `L`. Scanning
+the topology for that pattern finds **two**:
+
+| loop | L (lower) | U (upper) | `R_L` | `D` | `R_L/D` | `POWSTAT_MASL` | rule needs `>= HRW(L)` | |
+|---|---|---|---|---|---|---|---|---|
+| PUMP 0 HEISVERKET -> PSTATION 13 HEIMFOSS | TROLLDAMMEN 196-221 | SKYFONNA 288-308 | 25 m | 67 m | **0.3731** | **195.0** | 221.0 | **violated by 26 m** |
+| PUMP 1 OPPLOFT -> PSTATION 15 DYPFALL | SALTVIKA 13-23 | TROLLDAMMEN 196-221 | 10 m | 173 m | 0.0578 | **20.0** | 23.0 | violated by 3 m |
+
+Both violate the rule. HEISVERKET fails on two counts at once:
+
+- its datum at **195.0 sits 1 m below `LRW(TROLLDAMMEN) = 196`** — the "below L (deep
+  tailrace)" row of §2.2, the worst placement measured there;
+- its **geometry alone is in the unsafe class**: `R_L/D = 0.3731` exceeds the §3.1
+  energy-creation threshold `(1 - eta_prod)/eta_prod = 0.2688` for its own efficiencies
+  (`0.92 x 0.97 x 0.92 x 0.96 = 0.78817` at the best operating point). Per §3.1 this predicts
+  energy creation *with a physically-placed centreline*, before the extra metre below LRW.
+
+Frictionless closed form, worst case (`U` at its LRW, `L` at its HRW):
+
+| loop | `(U-P)/(U-L)` | predicted `eta_rt` |
+|---|---|---|
+| HEISVERKET | 1.38806 | **1.09402** |
+| OPPLOFT | 1.01734 | 0.80184 |
+
+### 5.2 Measured round trip, on the dataset itself
+
+The §2 protocol, unchanged: pump a volume `L -> U` at `t=0`, generate the identical volume
+back at `t=1`, every other action in the system set to zero, energies read from HERSS's own
+`S->Power`. Volume is matched by construction — `a_gen = a_pump * Qmax_pump / (n_gen *
+Qmax_gen)` — and every row below is verified to `|up - dn|/up <= 1e-6`. The operating point
+and both reservoir levels are swept; the maximum is reported.
+
+| loop | max measured `eta_rt` | at | `MWh in` | `MWh out` |
+|---|---|---|---|---|
+| **HEISVERKET** | **1.0256** | `a_pump` 0.50, TROLLDAMMEN at HRW, SKYFONNA at LRW | 5.7319 | **5.8788** |
+| OPPLOFT | 0.7032 | `a_pump` 0.40, SALTVIKA at HRW | 41.0575 | 28.8715 |
+
+**The HEISVERKET loop creates 0.1469 MWh per cycle — 2.56 % of its own input.** At a flat
+price it is profit with no price spread required.
+
+The focused map shows the region is narrow but not a knife-edge, and that `a_pump ~ 0.5` is an
+interior optimum rather than a grid boundary (`U_fr = 0.0`, SKYFONNA at LRW):
+
+```
+  a_pump \ L_fr     0.70     0.80     0.85     0.90     0.95     1.00
+        0.40      0.8889   0.9183   0.9336   0.9494   0.9656   0.9823
+        0.45      0.9097   0.9396   0.9552   0.9712   0.9877   1.0047
+        0.50      0.9293   0.9597   0.9755   0.9917   1.0084   1.0256
+        0.55      0.9150   0.9447   0.9601   0.9760   0.9923   1.0091
+        0.60      0.8998   0.9288   0.9438   0.9593   0.9752   0.9916
+```
+
+4 of 30 cells exceed 1.0. All of them need TROLLDAMMEN near HRW — which is precisely the state
+an optimizer is driven toward, because that is where the exploit pays. The OPPLOFT map has
+0 of 30 cells above 1.0.
+
+`gc.Diagnose()`, `gc.checkNrSteps()` and `DiagnoseRiversystemConfiguration()` all pass, and the
+HERSS log records **zero warnings and zero errors** across every run above, including the
+energy-creating ones. This is B4 reproduced on a dataset nobody built to provoke it.
+
+### 5.3 Why measured sits below the closed form
+
+Measured maxima are below the §5.1 predictions in both loops (1.0256 vs 1.09402; 0.7032 vs
+0.80184). Two causes, both real and both absent from the Part 2 instances by construction:
+
+1. **`HEADLOSSCOEF` is nonzero on all four machines** (0.045 / 0.045 on the HEISVERKET loop,
+   0.0075 / 0.03 on OPPLOFT). Headloss *raises* pump head and *lowers* turbine head, so it
+   cuts `eta_rt` from both sides. Part 2 set it to zero to get closed forms.
+2. **The pump and the turbine cannot both sit at peak efficiency.** Volume matching pins
+   `a_gen / a_pump = Qmax_pump / (n_gen * Qmax_gen)` — 1.00 for HEISVERKET, 1.25 for OPPLOFT —
+   so one machine is always off its best point. Part 2 used flat pump curves.
+
+**So the frictionless closed form is an upper bound on a real dataset, not a prediction.** It
+still discriminates correctly: it put HEISVERKET above 1.0 and OPPLOFT below, which is what
+measurement found.
+
+### 5.4 What repairing `fabelvassdraget` would cost
+
+Applying the rule — `POWSTAT_MASL := HRW(L)`, i.e. HEIMFOSS 195.0 -> **221.0** and DYPFALL
+20.0 -> **23.0** — restores the `eta_rt <= eta_prod` guarantee. The price is the §3.3
+understatement `R_L/(D + R_L)`:
+
+| loop | understates recovered energy by up to | verdict |
+|---|---|---|
+| HEISVERKET | **27.2 %** (25/92) | far outside the "declarable" band |
+| DYPFALL | **5.5 %** (10/183) | declarable, comparable to §3.3's medium-head case |
+
+**HEISVERKET has no good datum.** 25 m of drawdown against a 67 m gap puts it between the
+§3.2 "medium-head PSH" and "two mountain lakes" rows: a safe datum costs 27 % of recovered
+energy, and an accurate datum creates energy. Making that loop both safe and accurate requires
+changing the *elevations* — a larger `D` or a smaller `R_L` — not a parameter.
+
+**Consequence for instance design:** `R_L/(D + R_L)` is a constraint on the topology, not a
+setting. An instance generator that places reservoirs first and picks `POWSTAT_MASL` afterwards
+can produce a legal, clean-logging system with no acceptable datum available. The elevation
+constraint has to be imposed when the reservoirs are placed.
+
+---
+
 ## Answer to the question asked
 
 **R1 is removable by a statable placement rule, for the geometries this thesis should use —
@@ -375,7 +500,10 @@ physically-motivated value — makes the shipped fixture return **`eta_rt = 1.23
 pass on `inst_g545_500_540`, which returns `eta_rt = 6.4675`. A cross-node check is possible
 and cheap: if a station's `DOWNLINK_IDNR` reservoir is also some pump's `PUMP_SOURCE_IDNR`, and
 that pump's target is the station's intake, then warn unless `POWSTAT_MASL >= HRW` of the
-downlink reservoir.
+downlink reservoir. **This is no longer hypothetical: `data/fabelvassdraget` violates the rule
+in both of its loops and reaches `eta_rt = 1.0256` (§5), and the check above would have caught
+both at load time.** `part5_fabelvassdraget.py::find_loops` is a 20-line reference
+implementation of exactly that scan.
 
 **B3 — `POWSTAT_MASL` is documented as "turbine centreline elevation" (`doc/herss.tex:752`),
 which invites exactly the unsafe placement.** A real centreline sits at or below tailwater; the
@@ -412,7 +540,10 @@ cd analysis/r1_loop
 ../../.venv/bin/python part2_roundtrip.py   # loop exists; sweeps over L and POWSTAT_MASL
 ../../.venv/bin/python part3_boundary.py    # energy-creation boundary; placement rule
 ../../.venv/bin/python part4_shipped.py     # the shipped fixture; minimax alternative
+../../.venv/bin/python part5_fabelvassdraget.py   # the rule vs data/fabelvassdraget
 # inst_shipped_P60/ is the shipped fixture with POWSTAT_MASL 70.0 -> 60.0 (see 2.3)
+# inst_fabel/ is a verbatim copy of data/fabelvassdraget; part5 needs it in place:
+#   mkdir -p inst_fabel/output && cp ../../data/fabelvassdraget/*.txt inst_fabel/
 ```
 
 Each writes a `part*_results.json`. Nothing under `src/` or `data/` is touched.
