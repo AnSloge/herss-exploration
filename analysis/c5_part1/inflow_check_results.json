@@ -1,0 +1,58 @@
+{
+ "c5_high": {
+  "n_cells": 5,
+  "U_inflow_m3s_t0_t1": [
+   0.4543429911136627,
+   0.40241798758506775
+  ],
+  "max_ratio_with_inflow": 1.0000542756109707,
+  "max_ratio_inflow_zeroed": 0.9999461524480353,
+  "all_statuses_ok": true,
+  "aggressive_trips": [
+   {
+    "a_pump": 0.05,
+    "U_fr": 0.0,
+    "L_fr": 1.0,
+    "overdraw_cost_EUR": 3.8163916471489756e-14,
+    "up_Mm3": 0.01728,
+    "dn_Mm3": 0.0
+   }
+  ]
+ },
+ "c5_headkeep": {
+  "n_cells": 33,
+  "U_inflow_m3s_t0_t1": [
+   0.4543429911136627,
+   0.40241798758506775
+  ],
+  "max_ratio_with_inflow": 1.000548863403414,
+  "max_ratio_inflow_zeroed": 0.9999278713626308,
+  "all_statuses_ok": true,
+  "aggressive_trips": [
+   {
+    "a_pump": 0.05,
+    "U_fr": 0.0,
+    "L_fr": 1.0,
+    "overdraw_cost_EUR": 3.8163916471489756e-14,
+    "up_Mm3": 0.01728,
+    "dn_Mm3": 0.0
+   },
+   {
+    "a_pump": 0.1,
+    "U_fr": 0.0,
+    "L_fr": 1.0,
+    "overdraw_cost_EUR": 7.632783294297951e-14,
+    "up_Mm3": 0.03456,
+    "dn_Mm3": 0.0
+   },
+   {
+    "a_pump": 0.15,
+    "U_fr": 0.0,
+    "L_fr": 1.0,
+    "overdraw_cost_EUR": 1.1102230246251565e-13,
+    "up_Mm3": 0.05184,
+    "dn_Mm3": 0.0
+   }
+  ]
+ }
+}

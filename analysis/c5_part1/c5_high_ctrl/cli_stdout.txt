@@ -1,0 +1,9 @@
+#################################################################
+# The Hydraulic Economic River System Simulator (HERSS)
+# VERSION: 4.0.00
+# VERSION_DATE: 20260814
+#################################################################
+HERSS started at: 2026 9 21 15:40:49
+Program runtime (s): 0.005000
+Program runtime (min): 0.000083
+HERSS ended normally - bye!

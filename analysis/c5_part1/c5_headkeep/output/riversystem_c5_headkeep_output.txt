@@ -1,0 +1,34 @@
+Riversystem c5_headkeep
+Node Idnr Nodename          Nodetype int Nodetypename Remaining_Mm3
+Node  0 pump_LU              Nodetype 3  PUMP                  0.0000 
+Node  1 U_SYN_RHO1_R1        Nodetype 0  RESERVOIR             6.7215 
+Node  2 sta_UL               Nodetype 1  PSTATION              0.0000 
+Node  3 L_LOWER              Nodetype 0  RESERVOIR             10.8272 
+Node  4 elv                  Nodetype 2  CHANNEL               0.0288 
+-------------------------------------------
+GLOBAL WATERBALANCE
+start_water_Mm3   = 8.300000
+inflow_volume_Mm3 = 119.844000
+outflow_Mm3       = 110.566484
+end_water_Mm3     = 17.577516
+waterbalance      = -0.000000
+Note that there might be dead water below LRW in the system
+-------------------------------------------
+Average_price_Euro           = 137.878
+RestPrice_Euro               = 101.000
+tot_remaining_Mm3            = 17.578
+tot_active_remaining_Mm3     = 14.722
+tot_remaining_MWh            = 629.367
+tot_remaining_Euro           = 63566.043
+Sum_Production_MWh           = 9052.733
+Sum_Pump_Consumption_MWh     = 0.000
+tot_income_Euro              = 1243474.815
+Avg_achieved_price_E_MWh     = 137.359
+sum_qmin_cost_Euro           = 0.000
+sum_lrw_cost_Euro            = 0.000
+sum_startstopcost_Euro       = 1.000
+sum_max_adjustment_cost      = 0.000
+sum_aggressive_actions_cost  = 0.000
+tot_cost_Euro                = 1.000
+tot_profit_Euro              = 1243473.815
+valuefunction_Euro           = 1307039.858

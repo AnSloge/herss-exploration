@@ -1,0 +1,371 @@
+{
+ "herss_version": "4.0.00",
+ "herss_version_date": "20260814",
+ "base_commit": "0e98d837ed046e0089c6c7a0a641bc314cd627a4",
+ "variants": {
+  "c5_high": {
+   "variant": "c5_high",
+   "role": "primary: high head, POWSTAT_MASL = HRW(L)",
+   "cli": {
+    "logs": [
+     "herss_4.0.00_20260814.log"
+    ],
+    "err_warn_lines": [],
+    "ended_normally": true,
+    "file_waterbalance": "waterbalance      = 0.000000"
+   },
+   "diagnostics": "gc.Diagnose(), gc.checkNrSteps(), DiagnoseRiversystemConfiguration(): passed",
+   "numbers": {
+    "U_LRW": 748.0,
+    "U_HRW": 757.0,
+    "L_LRW": 380.0,
+    "L_HRW": 400.0,
+    "POWSTAT_MASL": 400.0,
+    "PUMP_INLET_MASL": 380.0,
+    "D": 348.0,
+    "R_L": 20.0,
+    "R_L_over_D": 0.05747126436781609,
+    "eta_pump_peak": 0.9,
+    "eta_motor": 0.97,
+    "eta_turb_peak": 0.93,
+    "eta_gen": 0.96,
+    "eta_prod": 0.7794144,
+    "threshold": 0.2830145298829481,
+    "datum_rule_ok": true,
+    "head_order_ok": true,
+    "understatement_bound": 0.05434782608695652,
+    "T": 365,
+    "qmax": 4.0,
+    "turbine_capacity_Mm3": 126.144,
+    "active_U_Mm3": 9.0,
+    "active_L_Mm3": 9.0,
+    "init_fr_U": 0.7,
+    "init_fr_L": 0.0,
+    "inflow_U_Mm3": 119.8440004896,
+    "inflow_L_Mm3": 0.0,
+    "pumpable_L0_Mm3": 0.0,
+    "R": 0.07134703196347032,
+    "rho": 1.0000000038812786,
+    "rho_system": 1.0000000038812786,
+    "head_span_ratio": 0.02553191489361702,
+    "gross_head_mid": 352.5
+   },
+   "sequences": [
+    {
+     "tag": "all off",
+     "vf_herss": 563943.6000000001,
+     "vf_replica": 563943.6000000001,
+     "dVF": 0.0,
+     "waterbalance": 2.842170943040401e-14,
+     "pumped_Mm3": 0.0,
+     "spill_L_Mm3": 106.63146203803174
+    },
+    {
+     "tag": "shipped actions",
+     "vf_herss": 7213788.0487708105,
+     "vf_replica": 7213788.0487708105,
+     "dVF": 0.0,
+     "waterbalance": 1.4210854715202004e-14,
+     "pumped_Mm3": 0.0,
+     "spill_L_Mm3": 110.59528395184884
+    },
+    {
+     "tag": "generate full",
+     "vf_herss": 12069120.071719745,
+     "vf_replica": 12069120.07171974,
+     "dVF": -5.587935447692871e-09,
+     "waterbalance": -5.684341886080802e-14,
+     "pumped_Mm3": 0.0,
+     "spill_L_Mm3": 116.27459967364946
+    },
+    {
+     "tag": "pump full",
+     "vf_herss": -15557313.283538876,
+     "vf_replica": -15557313.283538876,
+     "dVF": 0.0,
+     "waterbalance": -9.947598300641403e-14,
+     "pumped_Mm3": 115.96570623817932,
+     "spill_L_Mm3": 104.97706216754361
+    },
+    {
+     "tag": "gen then pump 2/2",
+     "vf_herss": -2615172.1129482486,
+     "vf_replica": -2615172.1129482365,
+     "dVF": 1.210719347000122e-08,
+     "waterbalance": 0.0,
+     "pumped_Mm3": 62.8992,
+     "spill_L_Mm3": 106.60815000855023
+    },
+    {
+     "tag": "simultaneous gen+pump",
+     "vf_herss": -731394.443765014,
+     "vf_replica": -731394.4437650011,
+     "dVF": 1.280568540096283e-08,
+     "waterbalance": -1.9895196601282805e-13,
+     "pumped_Mm3": 86.98751999999999,
+     "spill_L_Mm3": 81.89898202767854
+    },
+    {
+     "tag": "hatch drain",
+     "vf_herss": 8919567.07113255,
+     "vf_replica": 8919567.07113255,
+     "dVF": 0.0,
+     "waterbalance": -2.5579538487363607e-13,
+     "pumped_Mm3": 0.0,
+     "spill_L_Mm3": 0.6897153773096947
+    },
+    {
+     "tag": "random seed 0",
+     "vf_herss": -267875.98980986094,
+     "vf_replica": -267875.98980986734,
+     "dVF": -6.402842700481415e-09,
+     "waterbalance": -9.947598300641403e-14,
+     "pumped_Mm3": 44.963079914371114,
+     "spill_L_Mm3": 15.19829915499023
+    },
+    {
+     "tag": "random seed 1",
+     "vf_herss": 562593.3943448958,
+     "vf_replica": 562593.3943449096,
+     "dVF": 1.3737007975578308e-08,
+     "waterbalance": -2.842170943040401e-14,
+     "pumped_Mm3": 43.294021776919244,
+     "spill_L_Mm3": 14.685562742593444
+    },
+    {
+     "tag": "random seed 2",
+     "vf_herss": 851817.9603075244,
+     "vf_replica": 851817.9603075326,
+     "dVF": 8.149072527885437e-09,
+     "waterbalance": -2.842170943040401e-14,
+     "pumped_Mm3": 41.50847484001337,
+     "spill_L_Mm3": 16.99453109692334
+    },
+    {
+     "tag": "random seed 3",
+     "vf_herss": 736829.2003694852,
+     "vf_replica": 736829.2003694798,
+     "dVF": -5.3551048040390015e-09,
+     "waterbalance": -5.684341886080802e-14,
+     "pumped_Mm3": 40.43466835752001,
+     "spill_L_Mm3": 14.920810665594741
+    },
+    {
+     "tag": "random seed 4",
+     "vf_herss": 940505.7794528953,
+     "vf_replica": 940505.7794529051,
+     "dVF": 9.778887033462524e-09,
+     "waterbalance": -1.1368683772161603e-13,
+     "pumped_Mm3": 39.51956764651276,
+     "spill_L_Mm3": 11.775737967790322
+    },
+    {
+     "tag": "random seed 5",
+     "vf_herss": -289707.71785532637,
+     "vf_replica": -289707.7178553244,
+     "dVF": 1.979060471057892e-09,
+     "waterbalance": 1.4210854715202004e-14,
+     "pumped_Mm3": 46.042771152165805,
+     "spill_L_Mm3": 15.020655069561638
+    }
+   ],
+   "worst_abs_balance": 2.5579538487363607e-13,
+   "worst_abs_dVF": 1.3737007975578308e-08,
+   "balance_pass": true,
+   "replica_pass": true,
+   "determinism": {
+    "A1": 63335.920708369,
+    "A2": 63335.920708369,
+    "A_after_B": 63335.920708369,
+    "bit_identical": true
+   },
+   "terminal": {
+    "station_upstream_active_Mm3": 9.0,
+    "U_remaining_active_Mm3": 9.0,
+    "L_remaining_active_Mm3": 9.0
+   }
+  },
+  "c5_headkeep": {
+   "variant": "c5_headkeep",
+   "role": "secondary: Fase C head preserved, POWSTAT_MASL = HRW(L)",
+   "cli": {
+    "logs": [
+     "herss_4.0.00_20260814.log"
+    ],
+    "err_warn_lines": [],
+    "ended_normally": true,
+    "file_waterbalance": "waterbalance      = -0.000000"
+   },
+   "diagnostics": "gc.Diagnose(), gc.checkNrSteps(), DiagnoseRiversystemConfiguration(): passed",
+   "numbers": {
+    "U_LRW": 748.0,
+    "U_HRW": 757.0,
+    "L_LRW": 685.0,
+    "L_HRW": 690.0,
+    "POWSTAT_MASL": 690.0,
+    "PUMP_INLET_MASL": 685.0,
+    "D": 58.0,
+    "R_L": 5.0,
+    "R_L_over_D": 0.08620689655172414,
+    "eta_pump_peak": 0.9,
+    "eta_motor": 0.97,
+    "eta_turb_peak": 0.93,
+    "eta_gen": 0.96,
+    "eta_prod": 0.7794144,
+    "threshold": 0.2830145298829481,
+    "datum_rule_ok": true,
+    "head_order_ok": true,
+    "understatement_bound": 0.07936507936507936,
+    "T": 365,
+    "qmax": 4.0,
+    "turbine_capacity_Mm3": 126.144,
+    "active_U_Mm3": 9.0,
+    "active_L_Mm3": 9.0,
+    "init_fr_U": 0.7,
+    "init_fr_L": 0.0,
+    "inflow_U_Mm3": 119.8440004896,
+    "inflow_L_Mm3": 0.0,
+    "pumpable_L0_Mm3": 0.0,
+    "R": 0.07134703196347032,
+    "rho": 1.0000000038812786,
+    "rho_system": 1.0000000038812786,
+    "head_span_ratio": 0.144,
+    "gross_head_mid": 62.5
+   },
+   "sequences": [
+    {
+     "tag": "all off",
+     "vf_herss": 99990.0,
+     "vf_replica": 99990.0,
+     "dVF": 0.0,
+     "waterbalance": -2.842170943040401e-14,
+     "pumped_Mm3": 0.0,
+     "spill_L_Mm3": 106.63146203803164
+    },
+    {
+     "tag": "shipped actions",
+     "vf_herss": 1307039.8584683493,
+     "vf_replica": 1307039.8584683493,
+     "dVF": 0.0,
+     "waterbalance": -4.263256414560601e-14,
+     "pumped_Mm3": 0.0,
+     "spill_L_Mm3": 110.59528395184874
+    },
+    {
+     "tag": "generate full",
+     "vf_herss": 1999550.5646533398,
+     "vf_replica": 1999550.5646533398,
+     "dVF": 0.0,
+     "waterbalance": -1.4210854715202004e-14,
+     "pumped_Mm3": 0.0,
+     "spill_L_Mm3": 116.27459967364939
+    },
+    {
+     "tag": "pump full",
+     "vf_herss": -3111863.7018930274,
+     "vf_replica": -3111863.7018930274,
+     "dVF": 0.0,
+     "waterbalance": -1.4210854715202004e-13,
+     "pumped_Mm3": 115.96570623817932,
+     "spill_L_Mm3": 104.97706216754355
+    },
+    {
+     "tag": "gen then pump 2/2",
+     "vf_herss": -690204.4542974571,
+     "vf_replica": -690204.4542974569,
+     "dVF": 2.3283064365386963e-10,
+     "waterbalance": -7.105427357601002e-14,
+     "pumped_Mm3": 62.8992,
+     "spill_L_Mm3": 106.60815000855033
+    },
+    {
+     "tag": "simultaneous gen+pump",
+     "vf_herss": -305869.0502307806,
+     "vf_replica": -305869.0502307795,
+     "dVF": 1.1059455573558807e-09,
+     "waterbalance": -3.126388037344441e-13,
+     "pumped_Mm3": 86.98751999999999,
+     "spill_L_Mm3": 81.89898202767866
+    },
+    {
+     "tag": "hatch drain",
+     "vf_herss": 1592394.164641544,
+     "vf_replica": 1592394.164641544,
+     "dVF": 0.0,
+     "waterbalance": 3.836930773104541e-13,
+     "pumped_Mm3": 0.0,
+     "spill_L_Mm3": 0.6884204330054455
+    },
+    {
+     "tag": "random seed 0",
+     "vf_herss": -187816.64311851887,
+     "vf_replica": -187816.64311851584,
+     "dVF": 3.026798367500305e-09,
+     "waterbalance": -1.4210854715202004e-13,
+     "pumped_Mm3": 44.53447584186444,
+     "spill_L_Mm3": 15.052524875413472
+    },
+    {
+     "tag": "random seed 1",
+     "vf_herss": -2453.7904743477993,
+     "vf_replica": -2453.7904743414692,
+     "dVF": 6.3300831243395805e-09,
+     "waterbalance": 2.842170943040401e-14,
+     "pumped_Mm3": 42.39387408933847,
+     "spill_L_Mm3": 14.407576387244205
+    },
+    {
+     "tag": "random seed 2",
+     "vf_herss": 24174.42253396957,
+     "vf_replica": 24174.422533970617,
+     "dVF": 1.0477378964424133e-09,
+     "waterbalance": -4.263256414560601e-14,
+     "pumped_Mm3": 40.787701079835266,
+     "spill_L_Mm3": 16.716276746934422
+    },
+    {
+     "tag": "random seed 3",
+     "vf_herss": -18224.555080930644,
+     "vf_replica": -18224.555080927326,
+     "dVF": 3.3178366720676422e-09,
+     "waterbalance": 0.0,
+     "pumped_Mm3": 39.863590768088784,
+     "spill_L_Mm3": 14.863893112622378
+    },
+    {
+     "tag": "random seed 4",
+     "vf_herss": 44646.98192179897,
+     "vf_replica": 44646.98192180405,
+     "dVF": 5.078618414700031e-09,
+     "waterbalance": -9.947598300641403e-14,
+     "pumped_Mm3": 38.80700230409117,
+     "spill_L_Mm3": 11.664421204417266
+    },
+    {
+     "tag": "random seed 5",
+     "vf_herss": -182296.15717471787,
+     "vf_replica": -182296.15717471443,
+     "dVF": 3.434251993894577e-09,
+     "waterbalance": 0.0,
+     "pumped_Mm3": 44.62597495223329,
+     "spill_L_Mm3": 14.777441251690455
+    }
+   ],
+   "worst_abs_balance": 3.836930773104541e-13,
+   "worst_abs_dVF": 6.3300831243395805e-09,
+   "balance_pass": true,
+   "replica_pass": true,
+   "determinism": {
+    "A1": -97554.7690538126,
+    "A2": -97554.7690538126,
+    "A_after_B": -97554.7690538126,
+    "bit_identical": true
+   },
+   "terminal": {
+    "station_upstream_active_Mm3": 9.0,
+    "U_remaining_active_Mm3": 9.0,
+    "L_remaining_active_Mm3": 9.0
+   }
+  }
+ }
+}
