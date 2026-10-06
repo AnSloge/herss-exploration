@@ -1,0 +1,414 @@
+{
+ "dt_s": [
+  3600,
+  3600,
+  3600.0,
+  3600.0,
+  3600.0,
+  3600.0
+ ],
+ "T1_wiring": {
+  "pump0_source": 14,
+  "pump0_target": 10,
+  "SKYFONNA_tunnel_in_use": true,
+  "SKYFONNA_tunnel_to": 13,
+  "HEIMFOSS_downstream": 14,
+  "nodes_in_sim_order": [
+   [
+    0,
+    "PUMP"
+   ],
+   [
+    1,
+    "PUMP"
+   ],
+   [
+    2,
+    "RESERVOIR"
+   ],
+   [
+    3,
+    "RESERVOIR"
+   ],
+   [
+    4,
+    "PSTATION"
+   ],
+   [
+    5,
+    "CHANNEL"
+   ],
+   [
+    6,
+    "RESERVOIR"
+   ],
+   [
+    7,
+    "CHANNEL"
+   ],
+   [
+    8,
+    "CHANNEL"
+   ],
+   [
+    9,
+    "CHANNEL"
+   ],
+   [
+    10,
+    "RESERVOIR"
+   ],
+   [
+    11,
+    "CHANNEL"
+   ],
+   [
+    12,
+    "CHANNEL"
+   ],
+   [
+    13,
+    "PSTATION"
+   ],
+   [
+    14,
+    "RESERVOIR"
+   ],
+   [
+    15,
+    "PSTATION"
+   ],
+   [
+    16,
+    "RESERVOIR"
+   ],
+   [
+    17,
+    "PSTATION"
+   ],
+   [
+    18,
+    "CHANNEL"
+   ]
+  ],
+  "feeds_SKYFONNA": [],
+  "feeds_TROLLDAMMEN": [
+   [
+    9,
+    "down"
+   ],
+   [
+    11,
+    "down"
+   ],
+   [
+    13,
+    "down"
+   ]
+  ]
+ },
+ "T2_T3": {
+  "A_max": {
+   "warnings": 0,
+   "U_start_Mm3": 5.811386394059224,
+   "L_start_Mm3": 80.98144542018667,
+   "U_end_Mm3": 5.811386394059224,
+   "L_end_Mm3": 80.98144542018667,
+   "dU_Mm3": 0.0,
+   "dL_Mm3": 0.0,
+   "E_in": 5.73063059849143,
+   "E_out": 5.876782112249999,
+   "eta_rt": 1.0255035656629208,
+   "steps": [
+    {
+     "t": 0,
+     "pump_m3s": 7.5,
+     "station_m3s": 7.5,
+     "SKYFONNA_tunnel_m3s": 7.5,
+     "HEIMFOSS_up_inflow": 7.5,
+     "U": {
+      "inflow": 0.0,
+      "up_inflow": 0.0,
+      "pump_in_m3s": 7.5,
+      "pump_out_m3s": 0.0,
+      "tunnelflow_m3s": 7.5,
+      "hatchflow_m3s": 0.0,
+      "overflow_m3s": 0.0,
+      "auto_qmin_m3s": 0.0,
+      "res_Mm3": 5.811386394059224,
+      "res_masl": 288.0
+     },
+     "L": {
+      "inflow": 0.0,
+      "up_inflow": 7.5,
+      "pump_in_m3s": 0.0,
+      "pump_out_m3s": 7.5,
+      "tunnelflow_m3s": 0.0,
+      "hatchflow_m3s": 0.0,
+      "overflow_m3s": 0.0,
+      "auto_qmin_m3s": 0.0,
+      "res_Mm3": 80.98144542018667,
+      "res_masl": 220.99999999999997
+     },
+     "U_balance_residual_Mm3": 0.0,
+     "L_balance_residual_Mm3": 0.0,
+     "L_up_inflow_minus_station_m3s": 0.0,
+     "U_pump_in_minus_pump_m3s": 0.0,
+     "L_pump_out_minus_pump_m3s": 0.0
+    },
+    {
+     "t": 1,
+     "pump_m3s": 0.0,
+     "station_m3s": 0.0,
+     "SKYFONNA_tunnel_m3s": 0.0,
+     "HEIMFOSS_up_inflow": 0.0,
+     "U": {
+      "inflow": 0.0,
+      "up_inflow": 0.0,
+      "pump_in_m3s": 0.0,
+      "pump_out_m3s": 0.0,
+      "tunnelflow_m3s": 0.0,
+      "hatchflow_m3s": 0.0,
+      "overflow_m3s": 0.0,
+      "auto_qmin_m3s": 0.0,
+      "res_Mm3": 5.811386394059224,
+      "res_masl": 288.0
+     },
+     "L": {
+      "inflow": 0.0,
+      "up_inflow": 0.0,
+      "pump_in_m3s": 0.0,
+      "pump_out_m3s": 0.0,
+      "tunnelflow_m3s": 0.0,
+      "hatchflow_m3s": 0.0,
+      "overflow_m3s": 0.0,
+      "auto_qmin_m3s": 0.0,
+      "res_Mm3": 80.98144542018667,
+      "res_masl": 220.99999999999997
+     },
+     "U_balance_residual_Mm3": 0.0,
+     "L_balance_residual_Mm3": 0.0,
+     "L_up_inflow_minus_station_m3s": 0.0,
+     "U_pump_in_minus_pump_m3s": 0.0,
+     "L_pump_out_minus_pump_m3s": 0.0
+    }
+   ]
+  },
+  "B_max": {
+   "warnings": 0,
+   "U_start_Mm3": 5.811386394059224,
+   "L_start_Mm3": 80.98144542018667,
+   "U_end_Mm3": 5.811386394059224,
+   "L_end_Mm3": 80.98144542018667,
+   "dU_Mm3": 0.0,
+   "dL_Mm3": 0.0,
+   "E_in": 5.731961009416697,
+   "E_out": 5.877526725654511,
+   "eta_rt": 1.025395447735718,
+   "steps": [
+    {
+     "t": 0,
+     "pump_m3s": 7.5,
+     "station_m3s": 0.0,
+     "SKYFONNA_tunnel_m3s": 0.0,
+     "HEIMFOSS_up_inflow": 0.0,
+     "U": {
+      "inflow": 0.0,
+      "up_inflow": 0.0,
+      "pump_in_m3s": 7.5,
+      "pump_out_m3s": 0.0,
+      "tunnelflow_m3s": 0.0,
+      "hatchflow_m3s": 0.0,
+      "overflow_m3s": 0.0,
+      "auto_qmin_m3s": 0.0,
+      "res_Mm3": 5.838386394059224,
+      "res_masl": 288.02292555437754
+     },
+     "L": {
+      "inflow": 0.0,
+      "up_inflow": 0.0,
+      "pump_in_m3s": 0.0,
+      "pump_out_m3s": 7.5,
+      "tunnelflow_m3s": 0.0,
+      "hatchflow_m3s": 0.0,
+      "overflow_m3s": 0.0,
+      "auto_qmin_m3s": 0.0,
+      "res_Mm3": 80.95444542018667,
+      "res_masl": 220.9906411022364
+     },
+     "U_balance_residual_Mm3": 1.3530843112619095e-16,
+     "L_balance_residual_Mm3": -1.0234868508263162e-15,
+     "L_up_inflow_minus_station_m3s": 0.0,
+     "U_pump_in_minus_pump_m3s": 0.0,
+     "L_pump_out_minus_pump_m3s": 0.0
+    },
+    {
+     "t": 1,
+     "pump_m3s": 0.0,
+     "station_m3s": 7.5,
+     "SKYFONNA_tunnel_m3s": 7.5,
+     "HEIMFOSS_up_inflow": 7.5,
+     "U": {
+      "inflow": 0.0,
+      "up_inflow": 0.0,
+      "pump_in_m3s": 0.0,
+      "pump_out_m3s": 0.0,
+      "tunnelflow_m3s": 7.5,
+      "hatchflow_m3s": 0.0,
+      "overflow_m3s": 0.0,
+      "auto_qmin_m3s": 0.0,
+      "res_Mm3": 5.811386394059224,
+      "res_masl": 288.0
+     },
+     "L": {
+      "inflow": 0.0,
+      "up_inflow": 7.5,
+      "pump_in_m3s": 0.0,
+      "pump_out_m3s": 0.0,
+      "tunnelflow_m3s": 0.0,
+      "hatchflow_m3s": 0.0,
+      "overflow_m3s": 0.0,
+      "auto_qmin_m3s": 0.0,
+      "res_Mm3": 80.98144542018667,
+      "res_masl": 220.99999999999997
+     },
+     "U_balance_residual_Mm3": -1.3530843112619095e-16,
+     "L_balance_residual_Mm3": 1.0234868508263162e-15,
+     "L_up_inflow_minus_station_m3s": 0.0,
+     "U_pump_in_minus_pump_m3s": 0.0,
+     "L_pump_out_minus_pump_m3s": 0.0
+    }
+   ]
+  },
+  "A_interior": {
+   "warnings": 0,
+   "U_start_Mm3": 6.059219128633438,
+   "L_start_Mm3": 80.2988653952682,
+   "U_end_Mm3": 6.059219128633438,
+   "L_end_Mm3": 80.2988653952682,
+   "dU_Mm3": 0.0,
+   "dL_Mm3": 0.0,
+   "E_in": 5.767475246412582,
+   "E_out": 5.890445024127925,
+   "eta_rt": 1.021321249326875,
+   "steps": [
+    {
+     "t": 0,
+     "pump_m3s": 7.5,
+     "station_m3s": 7.5,
+     "SKYFONNA_tunnel_m3s": 7.5,
+     "HEIMFOSS_up_inflow": 7.5,
+     "U": {
+      "inflow": 0.0,
+      "up_inflow": 0.0,
+      "pump_in_m3s": 7.5,
+      "pump_out_m3s": 0.0,
+      "tunnelflow_m3s": 7.5,
+      "hatchflow_m3s": 0.0,
+      "overflow_m3s": 0.0,
+      "auto_qmin_m3s": 0.0,
+      "res_Mm3": 6.059219128633438,
+      "res_masl": 288.2103305066185
+     },
+     "L": {
+      "inflow": 0.0,
+      "up_inflow": 7.5,
+      "pump_in_m3s": 0.0,
+      "pump_out_m3s": 7.5,
+      "tunnelflow_m3s": 0.0,
+      "hatchflow_m3s": 0.0,
+      "overflow_m3s": 0.0,
+      "auto_qmin_m3s": 0.0,
+      "res_Mm3": 80.2988653952682,
+      "res_masl": 220.763284691723
+     },
+     "U_balance_residual_Mm3": 0.0,
+     "L_balance_residual_Mm3": 0.0,
+     "L_up_inflow_minus_station_m3s": 0.0,
+     "U_pump_in_minus_pump_m3s": 0.0,
+     "L_pump_out_minus_pump_m3s": 0.0
+    },
+    {
+     "t": 1,
+     "pump_m3s": 0.0,
+     "station_m3s": 0.0,
+     "SKYFONNA_tunnel_m3s": 0.0,
+     "HEIMFOSS_up_inflow": 0.0,
+     "U": {
+      "inflow": 0.0,
+      "up_inflow": 0.0,
+      "pump_in_m3s": 0.0,
+      "pump_out_m3s": 0.0,
+      "tunnelflow_m3s": 0.0,
+      "hatchflow_m3s": 0.0,
+      "overflow_m3s": 0.0,
+      "auto_qmin_m3s": 0.0,
+      "res_Mm3": 6.059219128633438,
+      "res_masl": 288.2103305066185
+     },
+     "L": {
+      "inflow": 0.0,
+      "up_inflow": 0.0,
+      "pump_in_m3s": 0.0,
+      "pump_out_m3s": 0.0,
+      "tunnelflow_m3s": 0.0,
+      "hatchflow_m3s": 0.0,
+      "overflow_m3s": 0.0,
+      "auto_qmin_m3s": 0.0,
+      "res_Mm3": 80.2988653952682,
+      "res_masl": 220.763284691723
+     },
+     "U_balance_residual_Mm3": 0.0,
+     "L_balance_residual_Mm3": 0.0,
+     "L_up_inflow_minus_station_m3s": 0.0,
+     "U_pump_in_minus_pump_m3s": 0.0,
+     "L_pump_out_minus_pump_m3s": 0.0
+    }
+   ]
+  }
+ },
+ "T4_knockout": {
+  "none": {
+   "dU_Mm3": 0.0,
+   "dL_Mm3": 0.0,
+   "warnings": 0,
+   "pump_m3s": 0.0,
+   "station_m3s": 0.0,
+   "L_overflow_m3s": 0.0
+  },
+  "pump_only": {
+   "dU_Mm3": 0.027000000000001023,
+   "dL_Mm3": -0.027000000000001023,
+   "warnings": 0,
+   "pump_m3s": 7.5,
+   "station_m3s": 0.0,
+   "L_overflow_m3s": 0.0
+  },
+  "station_only": {
+   "dU_Mm3": -0.027000000000001023,
+   "dL_Mm3": 0.027000000000001023,
+   "warnings": 0,
+   "pump_m3s": 0.0,
+   "station_m3s": 7.5,
+   "L_overflow_m3s": 0.0
+  },
+  "both": {
+   "dU_Mm3": 0.0,
+   "dL_Mm3": 0.0,
+   "warnings": 0,
+   "pump_m3s": 7.5,
+   "station_m3s": 7.5,
+   "L_overflow_m3s": 0.0
+  }
+ },
+ "T4_note": "run at fill 0.5/0.5: at the max state (U=LRW) station-only has no water above LRW, and L=HRW would spill; mid-range isolates the routing question",
+ "T5_heads": {
+  "pump_Hbrutto_HERSS": 67.00000000000003,
+  "pump_Hbrutto_from_res_arrays(U_avg-L_avg)": 67.00000000000003,
+  "station_Hbrutto_HERSS": 93.0,
+  "station_Hbrutto_from_res_arrays(U_avg-195)": 93.0,
+  "station_Hbrutto_if_tailwater_were_L(U_avg-L_avg)": 67.00000000000003,
+  "U_avg": 288.0,
+  "L_avg": 220.99999999999997
+ }
+}

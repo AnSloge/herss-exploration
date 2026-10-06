@@ -1,0 +1,9 @@
+RESERVOIR node 10 SKYFONNA
+reservoir_init_fr= 0.00000  init_masl=288.000
+Filling at HRW [Mm3] = 30.59466
+Filling at LRW [Mm3] = 5.81139
+Active reservoir capacity [Mm3] = 24.78327
+yyyy mm dd hh [m3/s] [Euro/MWh] [fr] [m3/s] [Mm3] [masl] [fr] [Euro]         [m3/s]     [m3/s]    [m3/s]   [m3/s]    [m3/s]   [m3/s]    [m3/s]     [m3/s] 
+yyyy mm dd hh Inflow Price Action Up_Inflow Res_Mm3 Res_masl Res_fr lrw_cost tunnelflow hatchflow overflow auto_qmin pump_in pump_out tot_inflow tot_outflow
+2026 1 15 0 0.0000 24.0000 0.0000 0.0000 5.8114 288.0000 0.0000 0.0000 7.5000 0.0000 0.0000 0.0000 7.5000 0.0000 7.5000 7.5000 
+2026 1 15 1 0.0000 19.4400 0.0000 0.0000 5.8114 288.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 

@@ -1,0 +1,94 @@
+{
+ "max_clean_noinflow": {
+  "returncode": 0,
+  "log_WRN": 0,
+  "log_ERR": 0,
+  "cli": {
+   "pumped_m3s": 7.5,
+   "turb_m3s": 7.5,
+   "E_in": 5.730631,
+   "E_out": 5.8768,
+   "eta_rt": 1.025506615240102,
+   "Hnetto_s": 90.4688,
+   "Hbrutto_s": 93.0
+  },
+  "inproc": {
+   "E_in": 5.73063059849143,
+   "E_out": 5.876782112249999,
+   "eta_rt": 1.0255035656629208,
+   "warnings": 0,
+   "Hn_s": 90.46875,
+   "Hb_s": 93.0
+  },
+  "abs_diff_eta": 3.04957718122445e-06
+ },
+ "max_base_inflow": {
+  "returncode": 0,
+  "log_WRN": 0,
+  "log_ERR": 0,
+  "cli": {
+   "pumped_m3s": 7.5,
+   "turb_m3s": 7.5,
+   "E_in": 5.73444,
+   "E_out": 5.8772,
+   "eta_rt": 1.0248951946484748,
+   "Hnetto_s": 90.4752,
+   "Hbrutto_s": 93.0065
+  },
+  "inproc": {
+   "E_in": 5.734440031861431,
+   "E_out": 5.877201489464463,
+   "eta_rt": 1.0248954486941755,
+   "warnings": 0,
+   "Hn_s": 90.47520600460359,
+   "Hb_s": 93.00645600460359
+  },
+  "abs_diff_eta": 2.540457006983132e-07
+ },
+ "interior_clean_noinflow": {
+  "returncode": 0,
+  "log_WRN": 0,
+  "log_ERR": 0,
+  "cli": {
+   "pumped_m3s": 7.5,
+   "turb_m3s": 7.5,
+   "E_in": 5.767475,
+   "E_out": 5.8904,
+   "eta_rt": 1.0213134864043623,
+   "Hnetto_s": 90.6791,
+   "Hbrutto_s": 93.2103
+  },
+  "inproc": {
+   "E_in": 5.767475246412582,
+   "E_out": 5.890445024127925,
+   "eta_rt": 1.021321249326875,
+   "warnings": 0,
+   "Hn_s": 90.6790805066185,
+   "Hb_s": 93.2103305066185
+  },
+  "abs_diff_eta": 7.762922512810633e-06
+ },
+ "datum221_same_state": {
+  "returncode": 0,
+  "log_WRN": 0,
+  "log_ERR": 0,
+  "cli": {
+   "pumped_m3s": 7.5,
+   "turb_m3s": 7.5,
+   "E_in": 5.730246,
+   "E_out": 4.1878,
+   "eta_rt": 0.730823772661767,
+   "Hnetto_s": 64.4684,
+   "Hbrutto_s": 66.9997
+  },
+  "inproc": {
+   "E_in": 5.730246079840661,
+   "E_out": 4.1878217650720355,
+   "eta_rt": 0.7308275607578243,
+   "warnings": 0,
+   "Hn_s": 64.46844430715277,
+   "Hb_s": 66.99969430715277
+  },
+  "abs_diff_eta": 3.788096057277812e-06
+ }
+}

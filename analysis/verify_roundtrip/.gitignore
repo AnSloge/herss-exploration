@@ -1,0 +1,6 @@
+# Per-cell sweep and refinement dumps (~58 MB). REPORT.md's file table says to
+# regenerate them rather than commit; the numbers the report quotes live in
+# results/*.json, which are tracked. Reproduce with sweep.py / analyse.py
+# as described in REPORT.md, "Reproduce".
+results/sweep_*.csv
+results/refine_*.csv

@@ -1,0 +1,7 @@
+CHANNEL node 18 MUNNINGEN
+N_CASCADE_LINRES 3
+K_TRAVELTIME_HOURS 3.00
+yyyy mm dd hh [m3/s]    [Mm3]       [m3/s]      [Euro]
+yyyy mm dd hh Up_Inflow Storage_Mm3 tot_outflow Qmin_Cost
+2026 1 15 0 22.0000 0.07525686 1.0953 8.0000 
+2026 1 15 1 22.0000 0.13766508 4.6644 8.0000 

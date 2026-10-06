@@ -1,0 +1,10 @@
+RESERVOIR node 16 SALTVIKA
+reservoir_init_fr= 0.50000  init_masl=18.046
+Filling at HRW [Mm3] = 26.45357
+Filling at LRW [Mm3] = 4.32807
+Active reservoir capacity [Mm3] = 22.12550
+outlet_auto_qmin_masl [masl] = 11.500
+yyyy mm dd hh [m3/s] [Euro/MWh] [fr] [m3/s] [Mm3] [masl] [fr] [Euro]         [m3/s]     [m3/s]    [m3/s]   [m3/s]    [m3/s]   [m3/s]    [m3/s]     [m3/s] 
+yyyy mm dd hh Inflow Price Action Up_Inflow Res_Mm3 Res_masl Res_fr lrw_cost tunnelflow hatchflow overflow auto_qmin pump_in pump_out tot_inflow tot_outflow
+2026 1 15 0 0.0000 24.0000 0.0000 0.3993 15.3131 18.0105 0.4965 0.0000 0.0000 0.0000 0.0000 22.0000 0.0000 0.0000 0.3993 22.0000 
+2026 1 15 1 0.0000 19.4400 0.0000 0.5275 15.2358 17.9756 0.4930 0.0000 0.0000 0.0000 0.0000 22.0000 0.0000 0.0000 0.5275 22.0000 

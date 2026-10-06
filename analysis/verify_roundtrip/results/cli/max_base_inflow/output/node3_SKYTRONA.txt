@@ -1,0 +1,9 @@
+RESERVOIR node 3 SKYTRONA
+reservoir_init_fr= 0.50000  init_masl=1001.050
+Filling at HRW [Mm3] = 635.11542
+Filling at LRW [Mm3] = 84.29725
+Active reservoir capacity [Mm3] = 550.81817
+yyyy mm dd hh [m3/s] [Euro/MWh] [fr] [m3/s] [Mm3] [masl] [fr] [Euro]         [m3/s]     [m3/s]    [m3/s]   [m3/s]    [m3/s]   [m3/s]    [m3/s]     [m3/s] 
+yyyy mm dd hh Inflow Price Action Up_Inflow Res_Mm3 Res_masl Res_fr lrw_cost tunnelflow hatchflow overflow auto_qmin pump_in pump_out tot_inflow tot_outflow
+2026 1 15 0 15.0000 24.0000 0.0000 0.0000 359.7603 1001.0558 0.5001 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 15.0000 0.0000 
+2026 1 15 1 15.5820 19.4400 0.0000 0.0000 359.8164 1001.0619 0.5002 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 15.5820 0.0000 

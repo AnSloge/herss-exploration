@@ -1,0 +1,7 @@
+CHANNEL node 9 SAMLOPET
+N_CASCADE_LINRES 3
+K_TRAVELTIME_HOURS 1.00
+yyyy mm dd hh [m3/s]    [Mm3]       [m3/s]      [Euro]
+yyyy mm dd hh Up_Inflow Storage_Mm3 tot_outflow Qmin_Cost
+2026 1 15 0 3.3488 0.01777949 6.7434 0.0000 
+2026 1 15 1 2.9195 0.01207047 4.5054 0.0000 

@@ -1,0 +1,30 @@
+{
+ "repo_HEAD": "7072a443cc9c54840cca200775a9cfe12faf8839",
+ "branch": "c5-part1",
+ "src_last_commit": "0d3fc59f1b020b6b7a009cb6a03efb56254cbe98",
+ "src_tree_HEAD": "f6c7758cd2e2522e5eb0a3e71223873dcfabbbc3",
+ "build": "git archive HEAD src | tar -x -C analysis/verify_roundtrip/build; make (default flags, logging on)",
+ "herss_so_sha256": "7c657f791539a28cb7bcef288453c87f27aeb8cbead6a452c51ad20c70c9cd63",
+ "herss_exe_sha256": "a5961f507f4db13b306efcff38f1fa95fd378241453a27628381c09253365db1",
+ "VERSION": "4.0.00",
+ "VERSION_DATE": "20260814",
+ "TAILWATER_IDNR_in_src": false,
+ "dataset_source": "data/fabelvassdraget (verbatim copy, price/inflow/actions truncated to first 2 rows, T=2, dt=3600 s)",
+ "variants": {
+  "fabel_base": "verbatim",
+  "fabel_datum221": "HEIMFOSS POWSTAT_MASL 195.0 -> 221.0 only",
+  "fabel_clean": "SKYFONNA OUTLET_AUTO_QMIN disabled; all channel linres start volumes 0"
+ },
+ "sweep_grid": {
+  "a": "0.05..1.00 step 0.05",
+  "fr_SKYFONNA": "0..0.95 step 0.05",
+  "fr_TROLLDAMMEN": "0..1.0 step 0.05"
+ },
+ "refine_grid": {
+  "clean_noinflow": "a 0.40..0.60/0.005, fr_up 0..0.2/0.01, fr_low 0.8..1.0/0.01",
+  "base": "a 0.45..0.55/0.005, fr_up 0..0.1/0.01, fr_low 0.90..1.0/0.002"
+ },
+ "seed": null,
+ "note": "fully deterministic; every sweep cell simulated twice and compared bit-for-bit",
+ "python": "repo .venv, cppyy"
+}

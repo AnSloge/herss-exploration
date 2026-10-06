@@ -1,0 +1,7 @@
+CHANNEL node 5 DUGGBEKKEN
+N_CASCADE_LINRES 3
+K_TRAVELTIME_HOURS 2.00
+yyyy mm dd hh [m3/s]    [Mm3]       [m3/s]      [Euro]
+yyyy mm dd hh Up_Inflow Storage_Mm3 tot_outflow Qmin_Cost
+2026 1 15 0 0.8000 0.00422538 0.4596 5.0000 
+2026 1 15 1 0.8000 0.00506364 0.5672 5.0000 

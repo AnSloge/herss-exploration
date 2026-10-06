@@ -1,0 +1,8 @@
+POWERSTATION node 4 TORDENFOSS
+init_Power = 0.00000
+penstock_config = SHARED
+headloss_coef = 0.150000
+yyyy mm dd hh [m3/s]    [Euro/MWh]  [fr_g0] [fr_g1] [m3/s] [m3/s] [m] [m] [MWh] [GWh/Mm3] [Euro] [Euro] [Euro] [Euro] [Euro] [Euro]
+yyyy mm dd hh Up_Inflow Price Action_g0 Action_g1 tot_outflow auto_qmin Hnetto Hbrutto Power est_eekv income tot_cost startstopCost adjust_cost cost_aggressive_actions profit
+2026 1 15 0 0.0000 24.0000 0.0000 0.0000 0.0000 0.0000 788.0499 788.0499 0.0000 0.0000  0.0000 0.0000 0.0000 0.0000 0.0000 0.0000
+2026 1 15 1 0.0000 19.4400 0.0000 0.0000 0.0000 0.0000 788.0499 788.0499 0.0000 0.0000  0.0000 0.0000 0.0000 0.0000 0.0000 0.0000

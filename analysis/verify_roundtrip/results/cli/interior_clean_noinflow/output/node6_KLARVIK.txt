@@ -1,0 +1,9 @@
+RESERVOIR node 6 KLARVIK
+reservoir_init_fr= 0.40000  init_masl=201.677
+Filling at HRW [Mm3] = 14.43725
+Filling at LRW [Mm3] = 3.18735
+Active reservoir capacity [Mm3] = 11.24990
+yyyy mm dd hh [m3/s] [Euro/MWh] [fr] [m3/s] [Mm3] [masl] [fr] [Euro]         [m3/s]     [m3/s]    [m3/s]   [m3/s]    [m3/s]   [m3/s]    [m3/s]     [m3/s] 
+yyyy mm dd hh Inflow Price Action Up_Inflow Res_Mm3 Res_masl Res_fr lrw_cost tunnelflow hatchflow overflow auto_qmin pump_in pump_out tot_inflow tot_outflow
+2026 1 15 0 0.0000 24.0000 0.0000 0.0896 7.6876 201.6772 0.4000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0896 0.0000 
+2026 1 15 1 0.0000 19.4400 0.0000 0.3141 7.6888 201.6789 0.4001 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.3141 0.0000 

@@ -1,0 +1,7 @@
+CHANNEL node 12 SALTBEKKEN
+N_CASCADE_LINRES 3
+K_TRAVELTIME_HOURS 3.00
+yyyy mm dd hh [m3/s]    [Mm3]       [m3/s]      [Euro]
+yyyy mm dd hh Up_Inflow Storage_Mm3 tot_outflow Qmin_Cost
+2026 1 15 0 0.0000 0.00000000 0.0000 5.0000 
+2026 1 15 1 0.0000 0.00000000 0.0000 5.0000 

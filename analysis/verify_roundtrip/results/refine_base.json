@@ -1,0 +1,204 @@
+{
+ "refine_base_A": {
+  "a": 0.5,
+  "fr_up": 0.0,
+  "fr_low": 0.998,
+  "U0": 288.0,
+  "L0": 220.95267617118967,
+  "eta_rt": 1.0248954486941755,
+  "E_in": 5.734440031861431,
+  "E_out": 5.877201489464463,
+  "Hb_p_0": 67.04622085815089,
+  "Hn_p_0": 69.57747085815089,
+  "Hb_s_0": 93.00645600460359,
+  "Hn_s_0": 90.47520600460359,
+  "L_end_0": 220.96779412171574,
+  "U_end_0": 288.01291200920724,
+  "L_upinflow_0": 14.613345713975402,
+  "L_inflow_0": 5.0,
+  "U_inflow_0": 4.423999786376953,
+  "U_autoqmin_0": 0.2
+ },
+ "aggr_at_LRW": [
+  {
+   "a": 0.05,
+   "aggr_cost": 7.546047120499111e-14,
+   "turb_m3s": 0.0,
+   "pumped_Mm3": 0.0027,
+   "requested_Mm3": 0.0027,
+   "Q_minus_upres_recomputed": 7.546047120499111e-17,
+   "req_minus_pumped": 0.0
+  },
+  {
+   "a": 0.1,
+   "aggr_cost": 1.5092094240998222e-13,
+   "turb_m3s": 0.0,
+   "pumped_Mm3": 0.0054,
+   "requested_Mm3": 0.0054,
+   "Q_minus_upres_recomputed": 1.5092094240998222e-16,
+   "req_minus_pumped": 0.0
+  },
+  {
+   "a": 0.15,
+   "aggr_cost": 2.2551405187698492e-13,
+   "turb_m3s": 0.0,
+   "pumped_Mm3": 0.0081,
+   "requested_Mm3": 0.0081,
+   "Q_minus_upres_recomputed": 2.255140518769849e-16,
+   "req_minus_pumped": 0.0
+  },
+  {
+   "a": 0.2,
+   "aggr_cost": 3.0184188481996443e-13,
+   "turb_m3s": 0.0,
+   "pumped_Mm3": 0.0108,
+   "requested_Mm3": 0.0108,
+   "Q_minus_upres_recomputed": 3.0184188481996443e-16,
+   "req_minus_pumped": 0.0
+  },
+  {
+   "a": 0.25,
+   "aggr_cost": 3.7643499428696714e-13,
+   "turb_m3s": 0.0,
+   "pumped_Mm3": 0.0135,
+   "requested_Mm3": 0.0135,
+   "Q_minus_upres_recomputed": 3.7643499428696714e-16,
+   "req_minus_pumped": 0.0
+  },
+  {
+   "a": 0.3,
+   "aggr_cost": 0.0,
+   "turb_m3s": 4.5,
+   "pumped_Mm3": 0.0162,
+   "requested_Mm3": 0.0162,
+   "Q_minus_upres_recomputed": -4.371503159461554e-16,
+   "req_minus_pumped": 0.0
+  },
+  {
+   "a": 0.35,
+   "aggr_cost": 0.0,
+   "turb_m3s": 5.25,
+   "pumped_Mm3": 0.0189,
+   "requested_Mm3": 0.0189,
+   "Q_minus_upres_recomputed": -3.608224830031759e-16,
+   "req_minus_pumped": 0.0
+  },
+  {
+   "a": 0.4,
+   "aggr_cost": 0.0,
+   "turb_m3s": 6.0,
+   "pumped_Mm3": 0.0216,
+   "requested_Mm3": 0.0216,
+   "Q_minus_upres_recomputed": -2.8449465006019636e-16,
+   "req_minus_pumped": 0.0
+  },
+  {
+   "a": 0.45,
+   "aggr_cost": 0.0,
+   "turb_m3s": 6.75,
+   "pumped_Mm3": 0.0243,
+   "requested_Mm3": 0.0243,
+   "Q_minus_upres_recomputed": -2.1163626406917047e-16,
+   "req_minus_pumped": 0.0
+  },
+  {
+   "a": 0.5,
+   "aggr_cost": 0.0,
+   "turb_m3s": 7.5,
+   "pumped_Mm3": 0.027,
+   "requested_Mm3": 0.027,
+   "Q_minus_upres_recomputed": -1.3530843112619095e-16,
+   "req_minus_pumped": 0.0
+  },
+  {
+   "a": 0.55,
+   "aggr_cost": 0.0,
+   "turb_m3s": 8.25,
+   "pumped_Mm3": 0.0297,
+   "requested_Mm3": 0.0297,
+   "Q_minus_upres_recomputed": -5.898059818321144e-17,
+   "req_minus_pumped": 0.0
+  },
+  {
+   "a": 0.6,
+   "aggr_cost": 1.3877787807814457e-14,
+   "turb_m3s": 0.0,
+   "pumped_Mm3": 0.0324,
+   "requested_Mm3": 0.0324,
+   "Q_minus_upres_recomputed": 1.3877787807814457e-17,
+   "req_minus_pumped": 0.0
+  },
+  {
+   "a": 0.65,
+   "aggr_cost": 9.020562075079397e-14,
+   "turb_m3s": 0.0,
+   "pumped_Mm3": 0.0351,
+   "requested_Mm3": 0.0351,
+   "Q_minus_upres_recomputed": 9.020562075079397e-17,
+   "req_minus_pumped": 0.0
+  },
+  {
+   "a": 0.7,
+   "aggr_cost": 1.6653345369377348e-13,
+   "turb_m3s": 0.0,
+   "pumped_Mm3": 0.0378,
+   "requested_Mm3": 0.0378,
+   "Q_minus_upres_recomputed": 1.6653345369377348e-16,
+   "req_minus_pumped": 0.0
+  },
+  {
+   "a": 0.75,
+   "aggr_cost": 2.42861286636753e-13,
+   "turb_m3s": 0.0,
+   "pumped_Mm3": 0.0405,
+   "requested_Mm3": 0.0405,
+   "Q_minus_upres_recomputed": 2.42861286636753e-16,
+   "req_minus_pumped": 0.0
+  },
+  {
+   "a": 0.8,
+   "aggr_cost": 3.191891195797325e-13,
+   "turb_m3s": 0.0,
+   "pumped_Mm3": 0.0432,
+   "requested_Mm3": 0.0432,
+   "Q_minus_upres_recomputed": 3.191891195797325e-16,
+   "req_minus_pumped": 0.0
+  },
+  {
+   "a": 0.85,
+   "aggr_cost": 3.95516952522712e-13,
+   "turb_m3s": 0.0,
+   "pumped_Mm3": 0.0459,
+   "requested_Mm3": 0.0459,
+   "Q_minus_upres_recomputed": 3.95516952522712e-16,
+   "req_minus_pumped": 0.0
+  },
+  {
+   "a": 0.9,
+   "aggr_cost": 0.0,
+   "turb_m3s": 13.5,
+   "pumped_Mm3": 0.0486,
+   "requested_Mm3": 0.0486,
+   "Q_minus_upres_recomputed": -4.2327252813834093e-16,
+   "req_minus_pumped": 0.0
+  },
+  {
+   "a": 0.95,
+   "aggr_cost": 0.0,
+   "turb_m3s": 14.25,
+   "pumped_Mm3": 0.0513,
+   "requested_Mm3": 0.0513,
+   "Q_minus_upres_recomputed": -3.469446951953614e-16,
+   "req_minus_pumped": 0.0
+  },
+  {
+   "a": 1.0,
+   "aggr_cost": 0.0,
+   "turb_m3s": 15.0,
+   "pumped_Mm3": 0.054,
+   "requested_Mm3": 0.054,
+   "Q_minus_upres_recomputed": -2.706168622523819e-16,
+   "req_minus_pumped": 0.0
+  }
+ ]
+}
